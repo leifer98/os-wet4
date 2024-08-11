@@ -1,0 +1,13 @@
+{
+    "C_Cpp.errorSquiggles": "disabled",
+    "files.associations": {
+        ".fantomasignore": "ignore",
+        "*.asm": "code-text-binary",
+        "xstring": "cpp",
+        "xutility": "cpp",
+        "iterator": "cpp",
+        "format": "cpp",
+        "initializer_list": "cpp",
+        "utility": "cpp"
+    }
+}
