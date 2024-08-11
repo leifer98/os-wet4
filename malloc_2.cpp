@@ -100,6 +100,9 @@ void *scalloc(size_t num, size_t size)
 
 void sfree(void *p)
 {
+    metaData* ptr = (metaData*)p;
+    if (p == nullptr) return;
+    ptr->is_free = true;
 }
 void *srealloc(void *oldp, size_t size)
 {
