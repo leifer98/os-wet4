@@ -11,6 +11,15 @@ typedef struct MallocMetadata
     MallocMetadata *prev;
 } metaData;
 
+struct stats{
+    size_t num_free_blocks;
+    size_t num_free_bytes;
+    size_t num_allocated_blocks;
+    size_t num_allocated_bytes;
+    size_t num_meta_data_bytes;
+    //size_t size_meta_data;
+}
+
 metaData *head = nullptr;
 metaData *tail = nullptr;
 int check = 0;
@@ -101,11 +110,12 @@ void *scalloc(size_t num, size_t size)
 void sfree(void *p)
 {
     metaData* ptr = (metaData*)p;
-    if (p == nullptr) return;
+    if (p == nullptr || p->is_free) return;
     ptr->is_free = true;
 }
 void *srealloc(void *oldp, size_t size)
 {
+    
     return nullptr;
 }
 size_t _num_free_blocks()
