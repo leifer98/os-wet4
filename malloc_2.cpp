@@ -1,5 +1,6 @@
 #include <unistd.h>
 #include <stdio.h>
+#include <string.h>
 
 #define MAX_SIZE 100000000 // Define a maximum size limit for allocation which is 10^8
 
@@ -115,7 +116,41 @@ void sfree(void *p)
 }
 void *srealloc(void *oldp, size_t size)
 {
-    
+    if (size == 0 || size > MAX_SIZE){
+        return NULL;
+    }
+
+    metaData* oldData = (metaData*)oldp;
+    if (oldData->size > size){
+        return oldp;
+    }
+    oldData->is_free = true;
+
+    metaData* cur = head;
+    while(cur != nullptr && !(cur->size > size && cur->is_free)){
+        cur = cur->next;
+    }
+    if (cur == nullptr){
+        void *program_break = sbrk(size + sizeof(metaData));
+        if (program_break == (void *)-1)
+        {
+            return NULL;
+        }
+        // Cast the allocated memory to metaData* and set its fields
+        metaData *data = (metaData *)program_break;
+        data->size = size;     // Set the size of the allocated block
+        data->is_free = false; // Mark the block as allocated
+
+        data->prev = tail;
+        tail->next = data;
+        data->next = nullptr;
+        tail = data;
+
+        //printList();
+        return (void *)((char *)program_break + sizeof(metaData));
+    }
+    memmove((cur + sizeof(metaData)), (oldData + sizeof(metaData)), oldData->size);
+    cur->is_free = false;
     return nullptr;
 }
 size_t _num_free_blocks()
