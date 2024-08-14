@@ -8,6 +8,21 @@
         "iterator": "cpp",
         "format": "cpp",
         "initializer_list": "cpp",
-        "utility": "cpp"
-    }
+        "utility": "cpp",
+        "iostream": "cpp",
+        "charconv": "cpp",
+        "xmemory": "cpp",
+        "array": "cpp",
+        "deque": "cpp",
+        "list": "cpp",
+        "stack": "cpp",
+        "vector": "cpp",
+        "xhash": "cpp",
+        "xtree": "cpp",
+        "random": "cpp",
+        "ranges": "cpp",
+        "regex": "cpp",
+        "span": "cpp"
+    },
+    "CodeGPT.apiKey": "OpenAI"
 }
