@@ -15,7 +15,10 @@
             "environment": [],
             "externalConsole": false,
             "MIMode": "gdb",
+<<<<<<< HEAD
             "miDebuggerPath": "/path/to/gdb",
+=======
+>>>>>>> 8a9418393230ef20c526859cbd1a6d25fbf2c0d7
             "setupCommands": [
                 {
                     "description": "Enable pretty-printing for gdb",
@@ -28,6 +31,12 @@
                     "ignoreFailures": true
                 }
             ]
+<<<<<<< HEAD
         },
         ]
+=======
+        }
+
+    ]
+>>>>>>> 8a9418393230ef20c526859cbd1a6d25fbf2c0d7
 }
