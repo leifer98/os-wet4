@@ -194,7 +194,7 @@ void addCellToArr(metaData *cell)
     cur->prev = cell;
     cell->next = cur;
 }
-int global = 0;
+
 /**
  * splitSingleCell - Splits a memory block until it matches the desired order.
  * @param order: The desired order of the block.
@@ -202,22 +202,16 @@ int global = 0;
  */
 void splitSingleCell(size_t order, metaData *currentMeta)
 {
-    //cout << "global: " << global << endl;
-    //global++;
     cout << "check 123 : Splitting block with order " << currentMeta->order << " to match order " << order << endl;
-    // printArr();
     if (order >= currentMeta->order){
         metaData* bef = currentMeta->prev;
         metaData* aft = currentMeta->next;
-        //cout << "HERE1" << endl;
         if (bef != nullptr){
             bef->next = aft;
         }
-        //cout << "HERE2" << endl;
         else{
             arr[currentMeta->order] = aft;
         }
-        //cout << "HERE3" << endl;
         if (aft != nullptr){
             aft->prev = bef;
         }
