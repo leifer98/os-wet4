@@ -7,10 +7,12 @@
 
 typedef struct MallocMetadata
 {
-    // size_t size;
+    size_t size;
     bool is_free;
     MallocMetadata *next;
     MallocMetadata *prev;
+    MallocMetadata *buddy;
+    
 } metaData;
 
 typedef struct stats
@@ -100,7 +102,47 @@ void create()
     created = true;
 }
 
-// void
+void addCellToArr(metaData* cell){
+    int order = getOrder(cell->size);
+    metaData* cur = arr[order];
+    if (cur == nullptr){
+        arr[order] = cell;
+    }
+    while(cur < cell){//after loop, cur will be first node with larger index
+        if (cur->next == nullptr){
+            cur->next = cell;
+            cell->prev = cur;
+            return;
+        }
+        cur = cur->next;
+    }
+    cell->prev = cur->prev;
+    cell->prev->next = cell;
+    cur->prev = cell;
+    cell->next = cur;
+}
+
+void splitSingleCell(size_t dataSize, metaData* currentMeta){
+    if (dataSize*2 > currentMeta->size) return;
+    currentMeta->size /= 2;
+    metaData* newCell = (metaData*)(currentMeta + currentMeta->size);
+    newCell->size = currentMeta->size;
+    newCell->is_free = true;
+    if (currentMeta->next != nullptr){
+        currentMeta->next->prev = currentMeta->prev;
+    }
+    else{
+        currentMeta->next->prev = nullptr;
+    }
+    if (currentMeta->prev != nullptr){
+        currentMeta->prev->next = currentMeta->next;
+    }
+    else{
+        currentMeta->prev->next = nullptr;
+    }
+    addCellToArr(newCell);
+    splitSingleCell(dataSize,currentMeta);
+}
 
 int getOrder(size_t size){
     for (int i = 0; i < length; i++) {
@@ -112,9 +154,15 @@ int getOrder(size_t size){
     int order = length - 1;
 }
 
-void* findFreeBlock(int order){ //finds the location for the data that will be inserted
+metaData* findandRemoveFreeBlock(int order){ //finds the location for the data that will be inserted
     for (int i = order; i < 11; i++){
         if (arr[i] != nullptr){
+            metaData* toReturn = arr[i];
+            splitSingleCell(toReturn->size, toReturn);//FIX - what exactly is size?
+            arr[i] = toReturn->next;
+            if (arr[i] != nullptr){
+                arr[i]->prev = nullptr;
+            }
             return arr[i];
         }
     }
@@ -126,9 +174,14 @@ void *smalloc(size_t size)
     if (!created)
         create();
 
+    int order = getOrder(size + sizeof(metaData));
+    //void* toInsert = findFreeBlock(order);
+    metaData* newData = (metaData*)findFreeBlock(order);
+    newData->is_free = false;
+    return (void*)(newData+sizeof(metaData));
     
     
-    void * head = arr[order];
+    //void * head = arr[order];
 
     //  Check if size is 0 or exceeds the maximum allowed size
     // if (size <= 0 || size > MAX_SIZE)
