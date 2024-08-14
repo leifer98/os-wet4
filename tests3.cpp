@@ -309,7 +309,8 @@ int main()
 
     printList();*/
     std::cout << "check1." << std::endl;
-    void *ptr1 = smalloc(16384);
+    void *ptr1 = smalloc(2);
+    void *ptr2 = smalloc(2);
     // void *ptr2 = smalloc(15);
     printArr();
 

@@ -202,14 +202,14 @@ int global = 0;
  */
 void splitSingleCell(size_t order, metaData *currentMeta)
 {
-    cout << "global: " << global << endl;
-    global++;
+    //cout << "global: " << global << endl;
+    //global++;
     cout << "check 123 : Splitting block with order " << currentMeta->order << " to match order " << order << endl;
     // printArr();
     if (order >= currentMeta->order){
         metaData* bef = currentMeta->prev;
         metaData* aft = currentMeta->next;
-        cout << "HERE1" << endl;
+        //cout << "HERE1" << endl;
         if (bef != nullptr){
             bef->next = aft;
         }
@@ -217,11 +217,13 @@ void splitSingleCell(size_t order, metaData *currentMeta)
         else{
             arr[currentMeta->order] = aft;
         }
-        cout << "HERE3" << endl;
+        //cout << "HERE3" << endl;
         if (aft != nullptr){
             aft->prev = bef;
         }
-        cout << "HERE4" << endl;
+        //cout << "HERE4" << endl;
+        cout << "\nfinished\n" << endl;
+        printArr();
         return;
     }
     currentMeta->order--;
@@ -229,28 +231,31 @@ void splitSingleCell(size_t order, metaData *currentMeta)
     newCell->order = currentMeta->order;
     cout << "new order is " << newCell->order << endl;
     newCell->is_free = true;
-    if (currentMeta->next != nullptr)//currentMeta is not last in his list
-    {
-        currentMeta->next->prev = currentMeta->prev;
+    metaData* prev = currentMeta->prev;
+    metaData* next = currentMeta->next;
+    if (prev == nullptr){
+        arr[currentMeta->order + 1] = next;
     }
-    if (currentMeta->prev != nullptr)//currentMeta is not head of list
-    {
-        currentMeta->prev->next = currentMeta->next;
+    else{
+        prev->next = next;
     }
-    else//currentMeta is head of list
-    {
-        arr[currentMeta->order + 1] = currentMeta->next;
+    if (next != nullptr){
+        next->prev = prev;
     }
-    cout << "\n print list 10" << endl;
-    printList(10);
-    cout << endl;
+    //cout << "\n print list 10" << endl;
+    //printList(10);
+    //cout << endl;
     currentMeta->next = nullptr;
     currentMeta->prev = nullptr;
     newCell->next = nullptr;
     newCell->prev = nullptr;
     addCellToArr(currentMeta);
+    cout << "addCellToArr(currentMeta);" << endl;
+    printList(10);
     addCellToArr(newCell);
-    cout << "check 123 : Splitting address " << currentMeta << "& order " << currentMeta->order << " to order " << order << endl;
+    cout << "addCellToArr(newCell);" << endl;
+    printList(10);
+    //cout << "check 123 : Splitting address " << currentMeta << "& order " << currentMeta->order << " to order " << order << endl;
     splitSingleCell(order, currentMeta);
 }
 
@@ -268,11 +273,11 @@ metaData *findandRemoveFreeBlock(int order)
         {
             metaData *toReturn = arr[i];
             splitSingleCell(order, toReturn);
-            arr[i] = toReturn->next;
+            /*arr[i] = toReturn->next;
             if (arr[i] != nullptr)
             {
                 arr[i]->prev = nullptr;
-            }
+            }*/
             return toReturn;
         }
     }
