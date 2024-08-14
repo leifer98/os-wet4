@@ -1,5 +1,6 @@
 #include <unistd.h>
 #include <stdio.h>
+#include <string.h>
 
 #define MAX_SIZE 100000000 // Define a maximum size limit for allocation which is 10^8
 
@@ -10,6 +11,15 @@ typedef struct MallocMetadata
     MallocMetadata *next;
     MallocMetadata *prev;
 } metaData;
+
+struct stats{
+    size_t num_free_blocks;
+    size_t num_free_bytes;
+    size_t num_allocated_blocks;
+    size_t num_allocated_bytes;
+    size_t num_meta_data_bytes;
+    //size_t size_meta_data;
+};
 
 metaData *head = nullptr;
 metaData *tail = nullptr;
@@ -52,7 +62,7 @@ void *smalloc(size_t size)
         data->prev = nullptr;
         head = data;
         tail = data;
-        printList();
+        // printList();
         return (void *)((char *)program_break + sizeof(metaData));
     }
 
@@ -81,11 +91,11 @@ void *smalloc(size_t size)
         data->next = nullptr;
         tail = data;
 
-        printList();
+        // printList();
         return (void *)((char *)program_break + sizeof(metaData));
     }
     ptr->is_free = false;
-    printList();
+    // printList();
     return (void *)((char *)ptr + sizeof(metaData));
 }
 
@@ -100,9 +110,48 @@ void *scalloc(size_t num, size_t size)
 
 void sfree(void *p)
 {
+    metaData* ptr = (metaData*)p;
+    if (ptr == nullptr || ptr->is_free) return;
+    ptr->is_free = true;
 }
 void *srealloc(void *oldp, size_t size)
 {
+    if (size == 0 || size > MAX_SIZE){
+        return NULL;
+    }
+
+
+    metaData* oldData = (metaData*)oldp;
+    if (oldData->size > size){
+        return oldp;
+    }
+    oldData->is_free = true;
+
+    metaData* cur = head;
+    while(cur != nullptr && !(cur->size > size && cur->is_free)){
+        cur = cur->next;
+    }
+    if (cur == nullptr){
+        void *program_break = sbrk(size + sizeof(metaData));
+        if (program_break == (void *)-1)
+        {
+            return NULL;
+        }
+        // Cast the allocated memory to metaData* and set its fields
+        metaData *data = (metaData *)program_break;
+        data->size = size;     // Set the size of the allocated block
+        data->is_free = false; // Mark the block as allocated
+
+        data->prev = tail;
+        tail->next = data;
+        data->next = nullptr;
+        tail = data;
+
+        //printList();
+        return (void *)((char *)program_break + sizeof(metaData));
+    }
+    memmove((cur + sizeof(metaData)), (oldData + sizeof(metaData)), oldData->size);
+    cur->is_free = false;
     return nullptr;
 }
 size_t _num_free_blocks()
