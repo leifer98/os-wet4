@@ -46,6 +46,8 @@ int pairs[][2] = {
 
 bool created = false; // Indicates if the memory pool has been created
 
+void printList(int i);
+
 void printArr()
 {
     std::cout << "=== Memory Blocks in arr ===" << std::endl;
@@ -53,6 +55,18 @@ void printArr()
     // Iterate over each order in arr
     for (int i = 0; i < 11; i++)
     {
+        printList(i);
+    }
+
+    std::cout << "=== End of Memory Blocks ===" << std::endl;
+}
+
+/**
+ * printList - Prints the list of all memory blocks.
+ * This function is intended for debugging purposes to visualize the memory blocks and their metadata.
+ */
+void printList(int i)
+{
         std::cout << "Order " << i << " (" << pairs[i][0] << " bytes):" << std::endl;
 
         metaData *current = arr[i];
@@ -61,7 +75,7 @@ void printArr()
         if (current == nullptr)
         {
             std::cout << "  No blocks in this order." << std::endl;
-            continue;
+            return;
         }
 
         int block_num = 1;
@@ -83,9 +97,6 @@ void printArr()
         }
     }
 
-    std::cout << "=== End of Memory Blocks ===" << std::endl;
-}
-
 /**
  * getOrder - Returns the order number for a given size.
  * @param size: The size for which the order is to be determined.
@@ -104,14 +115,7 @@ int getOrder(size_t size)
     return 10;
 }
 
-/**
- * printList - Prints the list of all memory blocks.
- * This function is intended for debugging purposes to visualize the memory blocks and their metadata.
- */
-void printList()
-{
-    // TODO: Add implementation if needed
-}
+
 
 /**
  * markAllBlocksNotFree - Marks all blocks in the list as not free.
@@ -156,7 +160,6 @@ void create()
  */
 void addCellToArr(metaData *cell)
 {
-
     cout << "cell info: " << cell << ",prev: " << cell->prev << ", next: " << (cell->next == nullptr) << endl;
     int order = cell->order;
     cout << "Adding block to order " << order << endl;
@@ -191,7 +194,7 @@ void addCellToArr(metaData *cell)
     cur->prev = cell;
     cell->next = cur;
 }
-
+int global = 0;
 /**
  * splitSingleCell - Splits a memory block until it matches the desired order.
  * @param order: The desired order of the block.
@@ -199,31 +202,53 @@ void addCellToArr(metaData *cell)
  */
 void splitSingleCell(size_t order, metaData *currentMeta)
 {
+    cout << "global: " << global << endl;
+    global++;
     cout << "check 123 : Splitting block with order " << currentMeta->order << " to match order " << order << endl;
     // printArr();
-    if (order >= currentMeta->order)
+    if (order >= currentMeta->order){
+        metaData* bef = currentMeta->prev;
+        metaData* aft = currentMeta->next;
+        cout << "HERE1" << endl;
+        if (bef != nullptr){
+            bef->next = aft;
+        }
+        //cout << "HERE2" << endl;
+        else{
+            arr[currentMeta->order] = aft;
+        }
+        cout << "HERE3" << endl;
+        if (aft != nullptr){
+            aft->prev = bef;
+        }
+        cout << "HERE4" << endl;
         return;
+    }
     currentMeta->order--;
     metaData *newCell = (metaData *)((char *)currentMeta + pairs[currentMeta->order][0]);
     newCell->order = currentMeta->order;
     cout << "new order is " << newCell->order << endl;
     newCell->is_free = true;
-    if (currentMeta->next != nullptr)
+    if (currentMeta->next != nullptr)//currentMeta is not last in his list
     {
         currentMeta->next->prev = currentMeta->prev;
     }
-    if (currentMeta->prev != nullptr)
+    if (currentMeta->prev != nullptr)//currentMeta is not head of list
     {
         currentMeta->prev->next = currentMeta->next;
     }
-    else
+    else//currentMeta is head of list
     {
         arr[currentMeta->order + 1] = currentMeta->next;
     }
+    cout << "\n print list 10" << endl;
+    printList(10);
+    cout << endl;
     currentMeta->next = nullptr;
     currentMeta->prev = nullptr;
     newCell->next = nullptr;
     newCell->prev = nullptr;
+    addCellToArr(currentMeta);
     addCellToArr(newCell);
     cout << "check 123 : Splitting address " << currentMeta << "& order " << currentMeta->order << " to order " << order << endl;
     splitSingleCell(order, currentMeta);
