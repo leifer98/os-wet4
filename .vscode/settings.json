@@ -22,7 +22,8 @@
         "random": "cpp",
         "ranges": "cpp",
         "regex": "cpp",
-        "span": "cpp"
+        "span": "cpp",
+        "ostream": "cpp"
     },
     "CodeGPT.apiKey": "OpenAI"
 }

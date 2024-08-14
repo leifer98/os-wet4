@@ -2,6 +2,9 @@
 #include <stdio.h>
 #include <string.h>
 #include <cstdio>
+#include <iostream>
+
+using namespace std;
 
 #define MAX_SIZE 100000000 // Define a maximum size limit for allocation which is 10^8
 
@@ -12,7 +15,7 @@ typedef struct MallocMetadata
     MallocMetadata *next;
     MallocMetadata *prev;
     MallocMetadata *buddy;
-    
+
 } metaData;
 
 typedef struct stats
@@ -42,6 +45,19 @@ int pairs[][2] = {
     {65536, 9},
     {131072, 10}};
 bool created = false;
+
+int getOrder(size_t size)
+{
+    for (int i = 0; i < 11; i++)
+    {
+        if (size < pairs[i][0])
+        {
+            return i; // Return the order number
+        }
+    }
+    // If the size is greater than or equal to the largest pair size, return the last order
+    return 10;
+}
 
 void printList()
 { // TODO: REMOVE BEFORE SUBMISSION
@@ -93,7 +109,7 @@ void create()
     metaData *temp = arr[10];
     for (size_t i = 0; i < 31; i++)
     {
-        metaData *curr = (metaData *)(temp + 131072);
+        metaData *curr = (metaData *)((char *)temp + 131072);
         curr->is_free = true;
         temp->next = curr;
         curr->prev = temp;
@@ -102,14 +118,18 @@ void create()
     created = true;
 }
 
-void addCellToArr(metaData* cell){
+void addCellToArr(metaData *cell)
+{
     int order = getOrder(cell->size);
-    metaData* cur = arr[order];
-    if (cur == nullptr){
+    metaData *cur = arr[order];
+    if (cur == nullptr)
+    {
         arr[order] = cell;
     }
-    while(cur < cell){//after loop, cur will be first node with larger index
-        if (cur->next == nullptr){
+    while (cur < cell)
+    { // after loop, cur will be first node with larger index
+        if (cur->next == nullptr)
+        {
             cur->next = cell;
             cell->prev = cur;
             return;
@@ -122,45 +142,53 @@ void addCellToArr(metaData* cell){
     cell->next = cur;
 }
 
-void splitSingleCell(size_t dataSize, metaData* currentMeta){
-    if (dataSize*2 > currentMeta->size) return;
+void splitSingleCell(size_t dataSize, metaData *currentMeta)
+{
+    if (dataSize * 2 > currentMeta->size)
+        return;
     currentMeta->size /= 2;
-    metaData* newCell = (metaData*)(currentMeta + currentMeta->size);
+    cout << "check561" << endl;
+    metaData *newCell = (metaData *)(currentMeta + currentMeta->size);
     newCell->size = currentMeta->size;
+    cout << "check563" << endl;
     newCell->is_free = true;
-    if (currentMeta->next != nullptr){
+    if (currentMeta->next != nullptr)
+    {
         currentMeta->next->prev = currentMeta->prev;
     }
-    else{
+    else
+    {
         currentMeta->next->prev = nullptr;
     }
-    if (currentMeta->prev != nullptr){
+    cout << "check565" << currentMeta->prev << endl;
+    if (currentMeta->prev != nullptr)
+    {
         currentMeta->prev->next = currentMeta->next;
     }
-    else{
+    else
+    {
         currentMeta->prev->next = nullptr;
     }
+    cout << "check566" << endl;
     addCellToArr(newCell);
-    splitSingleCell(dataSize,currentMeta);
+    splitSingleCell(dataSize, currentMeta);
 }
 
-int getOrder(size_t size){
-    for (int i = 0; i < length; i++) {
-        if (size < pairs[i][0]) {
-            return i; // Return the order number
-        }
-    }
-    // If the size is greater than or equal to the largest pair size, return the last order
-    int order = length - 1;
-}
-
-metaData* findandRemoveFreeBlock(int order){ //finds the location for the data that will be inserted
-    for (int i = order; i < 11; i++){
-        if (arr[i] != nullptr){
-            metaData* toReturn = arr[i];
-            splitSingleCell(toReturn->size, toReturn);//FIX - what exactly is size?
+metaData *findandRemoveFreeBlock(int order)
+{ // finds the location for the data that will be inserted
+    cout << "check 9871" << endl;
+    for (int i = order; i < 11; i++)
+    {
+        if (arr[i] != nullptr)
+        {
+            metaData *toReturn = arr[i];
+            cout << "check 9874" << endl;
+            splitSingleCell(toReturn->size, toReturn); // FIX - what exactly is size?
+            cout << "check 9875" << endl;
             arr[i] = toReturn->next;
-            if (arr[i] != nullptr){
+            cout << "check 9876" << endl;
+            if (arr[i] != nullptr)
+            {
                 arr[i]->prev = nullptr;
             }
             return arr[i];
@@ -175,13 +203,14 @@ void *smalloc(size_t size)
         create();
 
     int order = getOrder(size + sizeof(metaData));
-    //void* toInsert = findFreeBlock(order);
-    metaData* newData = (metaData*)findFreeBlock(order);
+    // void* toInsert = findFreeBlock(order);
+    cout << "check2" << endl;
+    metaData *newData = (metaData *)findandRemoveFreeBlock(order);
     newData->is_free = false;
-    return (void*)(newData+sizeof(metaData));
-    
-    
-    //void * head = arr[order];
+    cout << "check3" << endl;
+    return (void *)(newData + sizeof(metaData));
+
+    // void * head = arr[order];
 
     //  Check if size is 0 or exceeds the maximum allowed size
     // if (size <= 0 || size > MAX_SIZE)
