@@ -309,7 +309,7 @@ int main()
 
     printList();*/
     std::cout << "check1." << std::endl;
-    void *ptr = smalloc(10);
+    void *ptr = smalloc(567);
 
     std::cout << "All tests completed." << std::endl;
     return 0;

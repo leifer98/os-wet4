@@ -10,7 +10,7 @@ using namespace std;
 
 typedef struct MallocMetadata
 {
-    size_t size;
+    size_t order;
     bool is_free;
     MallocMetadata *next;
     MallocMetadata *prev;
@@ -105,12 +105,15 @@ void create()
     void *program_break = sbrk((131072 * 32));
     metaData *data = (metaData *)program_break;
     data->is_free = true;
+    data->prev = nullptr;
+    data->order = 10;
     arr[10] = data;
     metaData *temp = arr[10];
     for (size_t i = 0; i < 31; i++)
     {
         metaData *curr = (metaData *)((char *)temp + 131072);
         curr->is_free = true;
+        curr->order = 10;
         temp->next = curr;
         curr->prev = temp;
         temp = temp->next;
@@ -120,11 +123,13 @@ void create()
 
 void addCellToArr(metaData *cell)
 {
-    int order = getOrder(cell->size);
+    int order = cell->order;
+    cout << "adding to order " << order << endl;
     metaData *cur = arr[order];
     if (cur == nullptr)
     {
         arr[order] = cell;
+        return;
     }
     while (cur < cell)
     { // after loop, cur will be first node with larger index
@@ -132,9 +137,17 @@ void addCellToArr(metaData *cell)
         {
             cur->next = cell;
             cell->prev = cur;
+            cell->next = nullptr;
             return;
         }
         cur = cur->next;
+    }
+    if (cur->prev == nullptr)
+    {
+        arr[order] = cell;
+        cur->prev = cell;
+        cell->next = cur;
+        return;
     }
     cell->prev = cur->prev;
     cell->prev->next = cell;
@@ -142,16 +155,18 @@ void addCellToArr(metaData *cell)
     cell->next = cur;
 }
 
-void splitSingleCell(size_t dataSize, metaData *currentMeta)
+void splitSingleCell(size_t order, metaData *currentMeta)
 {
-    if (dataSize * 2 > currentMeta->size)
+    cout << "check560 order : " << order << "---" << currentMeta->order << endl;
+    if (order >= currentMeta->order )
         return;
-    currentMeta->size /= 2;
-    cout << "check561" << endl;
-    metaData *newCell = (metaData *)(currentMeta + currentMeta->size);
-    newCell->size = currentMeta->size;
+    currentMeta->order--;
+    cout << "check561   " << order << "    " << currentMeta->order << endl;
+    metaData *newCell = (metaData *)((char *)currentMeta + pairs[currentMeta->order][0]);
+    newCell->order = currentMeta->order;
     cout << "check563" << endl;
     newCell->is_free = true;
+    //update next
     if (currentMeta->next != nullptr)
     {
         currentMeta->next->prev = currentMeta->prev;
@@ -160,30 +175,31 @@ void splitSingleCell(size_t dataSize, metaData *currentMeta)
     {
         currentMeta->next->prev = nullptr;
     }
-    cout << "check565" << currentMeta->prev << endl;
+    cout << "check565    " << (currentMeta->prev == nullptr) << "   " << nullptr << endl;
+    //update prev
     if (currentMeta->prev != nullptr)
     {
         currentMeta->prev->next = currentMeta->next;
     }
     else
     {
-        currentMeta->prev->next = nullptr;
+        arr[currentMeta->order] = currentMeta->next;
     }
     cout << "check566" << endl;
     addCellToArr(newCell);
-    splitSingleCell(dataSize, currentMeta);
+    splitSingleCell(order, currentMeta);
 }
 
 metaData *findandRemoveFreeBlock(int order)
 { // finds the location for the data that will be inserted
-    cout << "check 9871" << endl;
+    cout << "order is " << order << endl;
     for (int i = order; i < 11; i++)
     {
         if (arr[i] != nullptr)
         {
             metaData *toReturn = arr[i];
             cout << "check 9874" << endl;
-            splitSingleCell(toReturn->size, toReturn); // FIX - what exactly is size?
+            splitSingleCell(order, toReturn); // FIX - what exactly is size?
             cout << "check 9875" << endl;
             arr[i] = toReturn->next;
             cout << "check 9876" << endl;
