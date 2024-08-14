@@ -8,29 +8,28 @@ using namespace std;
 
 #define MAX_SIZE 100000000 // Define a maximum size limit for allocation which is 10^8
 
+// Structure to hold metadata for each allocated block
 typedef struct MallocMetadata
 {
-    size_t order;
-    bool is_free;
-    MallocMetadata *next;
-    MallocMetadata *prev;
-    MallocMetadata *buddy;
-
+    size_t order;          // Order of the block size (used in buddy system)
+    bool is_free;          // Indicates if the block is free or allocated
+    MallocMetadata *next;  // Pointer to the next block in the list
+    MallocMetadata *prev;  // Pointer to the previous block in the list
+    MallocMetadata *buddy; // Pointer to the buddy block in the buddy system
 } metaData;
 
+// Structure to hold statistics about the memory allocation
 typedef struct stats
 {
-    size_t num_free_blocks;
-    size_t num_free_bytes;
-    size_t num_allocated_blocks;
-    size_t num_allocated_bytes;
-    size_t num_meta_data_bytes;
-    size_t size_meta_data;
+    size_t num_free_blocks;      // Number of free blocks
+    size_t num_free_bytes;       // Number of free bytes
+    size_t num_allocated_blocks; // Number of allocated blocks
+    size_t num_allocated_bytes;  // Number of allocated bytes
+    size_t num_meta_data_bytes;  // Number of metadata bytes
+    size_t size_meta_data;       // Size of a single metadata structure
 } metaStats;
 
-/*metaData *head = nullptr;
-metaData *tail = nullptr;*/
-metaData *arr[11] = {nullptr};                       // Initialize the first element to nullptr, others will be initialized to 0 (nullptr in this case)
+metaData *arr[11] = {nullptr};                       // Array of lists for different block sizes
 metaStats stats = {0, 0, 0, 0, 0, sizeof(metaData)}; // Initialize stats
 int pairs[][2] = {
     {128, 0},
@@ -43,9 +42,55 @@ int pairs[][2] = {
     {16384, 7},
     {32768, 8},
     {65536, 9},
-    {131072, 10}};
-bool created = false;
+    {131072, 10}}; // Pairs of block sizes and their orders
 
+bool created = false; // Indicates if the memory pool has been created
+
+void printArr()
+{
+    std::cout << "=== Memory Blocks in arr ===" << std::endl;
+
+    // Iterate over each order in arr
+    for (int i = 0; i < 11; i++)
+    {
+        std::cout << "Order " << i << " (" << pairs[i][0] << " bytes):" << std::endl;
+
+        metaData *current = arr[i];
+
+        // If there are no blocks in the current order
+        if (current == nullptr)
+        {
+            std::cout << "  No blocks in this order." << std::endl;
+            continue;
+        }
+
+        int block_num = 1;
+
+        // Iterate through the linked list of blocks for the current order
+        while (current != nullptr)
+        {
+            std::cout << "  Block " << block_num << ":" << std::endl;
+            std::cout << "    Address: " << current << std::endl;
+            // std::cout << "    Is Free: " << (current->is_free ? "Yes" : "No") << std::endl;
+            // std::cout << "    Order: " << current->order << std::endl;
+            // std::cout << "    Next: " << current->next << std::endl;
+            // std::cout << "    Prev: " << current->prev << std::endl;
+            // std::cout << "    Buddy: " << current->buddy << std::endl;
+
+            // Move to the next block in the list
+            current = current->next;
+            block_num++;
+        }
+    }
+
+    std::cout << "=== End of Memory Blocks ===" << std::endl;
+}
+
+/**
+ * getOrder - Returns the order number for a given size.
+ * @param size: The size for which the order is to be determined.
+ * @return: The order number corresponding to the smallest block size that can fit the given size.
+ */
 int getOrder(size_t size)
 {
     for (int i = 0; i < 11; i++)
@@ -59,54 +104,38 @@ int getOrder(size_t size)
     return 10;
 }
 
+/**
+ * printList - Prints the list of all memory blocks.
+ * This function is intended for debugging purposes to visualize the memory blocks and their metadata.
+ */
 void printList()
-{ // TODO: REMOVE BEFORE SUBMISSION
-  //     int rank = 1; // Initialize rank number
-  //     metaData *cur = head;
-
-    //     printf("=== Memory Block List ===\n");
-
-    //     while (cur != nullptr)
-    //     {
-    //         // Print all information on a single line
-    //         printf("Block %d: Size: %ld bytes, Is Free: %s, Content (hex): 0x%lx\n",
-    //                rank,
-    //                cur->size,
-    //                cur->is_free ? "Yes" : "No",
-    //                *((unsigned long *)(cur + 1))); // Cast the content to an unsigned long and print as hex
-
-    //         // Move to the next block
-    //         cur = cur->next;
-    //         rank++; // Increment rank number
-    //     }
-
-    //     printf("=========================\n");
-    //     printf("Finished printing list.\n");
+{
+    // TODO: Add implementation if needed
 }
-// Helper function to mark all blocks as not free
+
+/**
+ * markAllBlocksNotFree - Marks all blocks in the list as not free.
+ * This function iterates over all blocks and marks them as used, updating the statistics accordingly.
+ */
 void markAllBlocksNotFree()
 {
-    //     metaData *current = head;
-
-    //     while (current != nullptr)
-    //     {
-    //         if (current->is_free)
-    //         {
-    //             current->is_free = false;              // Mark the block as not free
-    //             stats.num_free_blocks--;               // Decrease the count of free blocks
-    //             stats.num_free_bytes -= current->size; // Decrease the free bytes count
-    //         }
-    //         current = current->next; // Move to the next block
-    //     }
+    // TODO: Implement if needed
 }
 
+/**
+ * create - Initializes the memory pool by allocating a large block of memory.
+ * The block is split into smaller blocks, and the largest block is added to the array.
+ */
 void create()
 {
-    void *program_break = sbrk((131072 * 32));
+    void *program_break = sbrk(131072 * 32); // Allocate 32 blocks of the largest size
     metaData *data = (metaData *)program_break;
     data->is_free = true;
     data->prev = nullptr;
     data->order = 10;
+    for(int i = 0; i < 10; i++){
+        arr[i] = nullptr;
+    }
     arr[10] = data;
     metaData *temp = arr[10];
     for (size_t i = 0; i < 31; i++)
@@ -121,18 +150,26 @@ void create()
     created = true;
 }
 
+/**
+ * addCellToArr - Adds a memory block to the appropriate order list.
+ * @param cell: Pointer to the metadata of the memory block to be added.
+ */
 void addCellToArr(metaData *cell)
 {
+
+    cout << "cell info: " << cell << ",prev: " << cell->prev << ", next: " << (cell->next == nullptr) << endl;
     int order = cell->order;
-    cout << "adding to order " << order << endl;
+    cout << "Adding block to order " << order << endl;
     metaData *cur = arr[order];
     if (cur == nullptr)
     {
+        cout << "cell here" << endl;
         arr[order] = cell;
         return;
     }
+    cout << cur << endl;
     while (cur < cell)
-    { // after loop, cur will be first node with larger index
+    {
         if (cur->next == nullptr)
         {
             cur->next = cell;
@@ -155,251 +192,192 @@ void addCellToArr(metaData *cell)
     cell->next = cur;
 }
 
+/**
+ * splitSingleCell - Splits a memory block until it matches the desired order.
+ * @param order: The desired order of the block.
+ * @param currentMeta: Pointer to the metadata of the block to be split.
+ */
 void splitSingleCell(size_t order, metaData *currentMeta)
 {
-    cout << "check560 order : " << order << "---" << currentMeta->order << endl;
-    if (order >= currentMeta->order )
+    cout << "check 123 : Splitting block with order " << currentMeta->order << " to match order " << order << endl;
+    // printArr();
+    if (order >= currentMeta->order)
         return;
     currentMeta->order--;
-    cout << "check561   " << order << "    " << currentMeta->order << endl;
     metaData *newCell = (metaData *)((char *)currentMeta + pairs[currentMeta->order][0]);
     newCell->order = currentMeta->order;
-    cout << "check563" << endl;
+    cout << "new order is " << newCell->order << endl;
     newCell->is_free = true;
-    //update next
     if (currentMeta->next != nullptr)
     {
         currentMeta->next->prev = currentMeta->prev;
     }
-    else
-    {
-        currentMeta->next->prev = nullptr;
-    }
-    cout << "check565    " << (currentMeta->prev == nullptr) << "   " << nullptr << endl;
-    //update prev
     if (currentMeta->prev != nullptr)
     {
         currentMeta->prev->next = currentMeta->next;
     }
     else
     {
-        arr[currentMeta->order] = currentMeta->next;
+        arr[currentMeta->order + 1] = currentMeta->next;
     }
-    cout << "check566" << endl;
+    currentMeta->next = nullptr;
+    currentMeta->prev = nullptr;
+    newCell->next = nullptr;
+    newCell->prev = nullptr;
     addCellToArr(newCell);
+    cout << "check 123 : Splitting address " << currentMeta << "& order " << currentMeta->order << " to order " << order << endl;
     splitSingleCell(order, currentMeta);
 }
 
+/**
+ * findandRemoveFreeBlock - Finds and removes a free block of the required order.
+ * @param order: The order of the block to find.
+ * @return: Pointer to the metadata of the found block.
+ */
 metaData *findandRemoveFreeBlock(int order)
-{ // finds the location for the data that will be inserted
-    cout << "order is " << order << endl;
+{
+    cout << "Looking for a free block with order " << order << endl;
     for (int i = order; i < 11; i++)
     {
         if (arr[i] != nullptr)
         {
             metaData *toReturn = arr[i];
-            cout << "check 9874" << endl;
-            splitSingleCell(order, toReturn); // FIX - what exactly is size?
-            cout << "check 9875" << endl;
+            splitSingleCell(order, toReturn);
             arr[i] = toReturn->next;
-            cout << "check 9876" << endl;
             if (arr[i] != nullptr)
             {
                 arr[i]->prev = nullptr;
             }
-            return arr[i];
+            return toReturn;
         }
     }
     return nullptr;
 }
 
+/**
+ * smalloc - Allocates a memory block of the given size.
+ * @param size: The size of the memory block to allocate.
+ * @return: Pointer to the allocated memory block, or NULL if allocation fails.
+ */
 void *smalloc(size_t size)
 {
     if (!created)
         create();
-
+    printArr();
     int order = getOrder(size + sizeof(metaData));
-    // void* toInsert = findFreeBlock(order);
-    cout << "check2" << endl;
-    metaData *newData = (metaData *)findandRemoveFreeBlock(order);
+    cout << "Allocating block with order " << order << " for size " << size << endl;
+    metaData *newData = findandRemoveFreeBlock(order);
+    if (newData == nullptr)
+        return nullptr;
     newData->is_free = false;
-    cout << "check3" << endl;
-    return (void *)(newData + sizeof(metaData));
-
-    // void * head = arr[order];
-
-    //  Check if size is 0 or exceeds the maximum allowed size
-    // if (size <= 0 || size > MAX_SIZE)
-    // {
-    //     return NULL; // Return NULL if size is invalid
-    // }
-
-    // if (head == nullptr) // First node in the list
-    // {
-    //     void *program_break = sbrk(size + sizeof(metaData));
-    //     if (program_break == (void *)-1)
-    //     {
-    //         return NULL;
-    //     }
-    //     metaData *data = (metaData *)program_break;
-    //     data->size = size;     // Set the size of the allocated block
-    //     data->is_free = false; // Mark the block as allocated
-    //     data->next = nullptr;
-    //     data->prev = nullptr;
-    //     head = data;
-    //     tail = data;
-
-    //     // Update stats for the first allocation
-    //     stats.num_allocated_blocks++;
-    //     stats.num_allocated_bytes += size;
-    //     stats.num_meta_data_bytes += sizeof(metaData);
-
-    //     return (void *)((char *)program_break + sizeof(metaData));
-    // }
-
-    // metaData *ptr = head;
-
-    // // Iterate through the list to find a suitable free block
-    // while (ptr && (!ptr->is_free || ptr->size < size))
-    // {
-    //     ptr = ptr->next;
-    // }
-
-    // if (ptr == nullptr) // No suitable free block found
-    // {
-    //     void *program_break = sbrk(size + sizeof(metaData));
-    //     if (program_break == (void *)-1)
-    //     {
-    //         return NULL;
-    //     }
-    //     // Cast the allocated memory to metaData* and set its fields
-    //     metaData *data = (metaData *)program_break;
-    //     data->size = size;     // Set the size of the allocated block
-    //     data->is_free = false; // Mark the block as allocated
-
-    //     data->prev = tail;
-    //     tail->next = data;
-    //     data->next = nullptr;
-    //     tail = data;
-
-    //     // Update stats for the new allocation
-    //     stats.num_allocated_blocks++;
-    //     stats.num_allocated_bytes += size;
-    //     stats.num_meta_data_bytes += sizeof(metaData);
-
-    //     return (void *)((char *)program_break + sizeof(metaData));
-    // }
-
-    // // If a suitable free block is found
-    // ptr->is_free = false;
-    // stats.num_free_blocks--;
-    // stats.num_free_bytes -= ptr->size;
-
-    // return (void *)((char *)ptr + sizeof(metaData));
-    return nullptr;
+    cout << "Allocation successful. Returning pointer to block." << endl;
+    return (void *)((char *)newData + sizeof(metaData));
 }
 
+/**
+ * scalloc - Allocates a memory block for an array of elements, each of a given size, and zeroes it out.
+ * @param num: Number of elements.
+ * @param size: Size of each element.
+ * @return: Pointer to the allocated and zero-initialized memory block.
+ */
 void *scalloc(size_t num, size_t size)
 {
-    // if (num == 0 || size == 0)
-    // {
-    //     return NULL;
-    // }
-
-    // void *ptr = smalloc(num * size);
-
-    // if (ptr != nullptr)
-    // {
-    //     memset(ptr, 0, num * size); // Zero out the allocated memory
-    // }
-
-    // return ptr;
-    return nullptr;
+    void *ptr = smalloc(num * size);
+    if (ptr != nullptr)
+    {
+        memset(ptr, 0, num * size);
+    }
+    return ptr;
 }
 
+/**
+ * sfree - Frees a memory block.
+ * @param p: Pointer to the memory block to be freed.
+ */
 void sfree(void *p)
 {
-    // if (p == nullptr)
-    //     return;
-
-    // metaData *ptr = (metaData *)((char *)p - sizeof(metaData));
-
-    // if (ptr->is_free)
-    //     return;
-
-    // ptr->is_free = true;
-
-    // // Update stats for freeing the block
-    // stats.num_free_blocks++;
-    // stats.num_free_bytes += ptr->size;
+    if (p == nullptr)
+        return;
+    metaData *ptr = (metaData *)((char *)p - sizeof(metaData));
+    if (ptr->is_free)
+        return;
+    ptr->is_free = true;
+    stats.num_free_blocks++;
+    stats.num_free_bytes += pairs[ptr->order][0];
 }
 
+/**
+ * srealloc - Resizes a memory block to a new size.
+ * @param oldp: Pointer to the old memory block.
+ * @param size: New size for the memory block.
+ * @return: Pointer to the resized memory block, or NULL if resizing fails.
+ */
 void *srealloc(void *oldp, size_t size)
 {
-    // if (size == 0 || size > MAX_SIZE)
-    // {
-    //     return NULL;
-    // }
-
-    // if (oldp == nullptr)
-    // {
-    //     return smalloc(size); // If oldp is NULL, behave like smalloc
-    // }
-
-    // metaData *oldData = (metaData *)((char *)oldp - sizeof(metaData));
-
-    // if (oldData->size >= size)
-    // {
-    //     return oldp; // If the existing block is big enough, return the old pointer
-    // }
-
-    // void *newp = smalloc(size);
-
-    // if (newp == nullptr)
-    // {
-    //     return NULL;
-    // }
-
-    // memcpy(newp, oldp, oldData->size); // Copy old data to the new block
-    // sfree(oldp);                       // Free the old block
-
-    // return newp;
-    return nullptr;
+    if (size == 0 || size > MAX_SIZE)
+        return NULL;
+    if (oldp == nullptr)
+        return smalloc(size);
+    metaData *oldData = (metaData *)((char *)oldp - sizeof(metaData));
+    if (oldData->order >= getOrder(size))
+        return oldp;
+    void *newp = smalloc(size);
+    if (newp == nullptr)
+        return NULL;
+    memcpy(newp, oldp, pairs[oldData->order][0] - sizeof(metaData));
+    sfree(oldp);
+    return newp;
 }
 
-// Returns the number of allocated blocks in the heap that are currently free.
+/**
+ * _num_free_blocks - Returns the number of free blocks.
+ * @return: The number of currently free blocks.
+ */
 size_t _num_free_blocks()
 {
     return stats.num_free_blocks;
 }
 
-// Returns the number of bytes in all allocated blocks in the heap that are currently free,
-// excluding the bytes used by the meta-data structs.
+/**
+ * _num_free_bytes - Returns the number of free bytes.
+ * @return: The number of bytes in all free blocks.
+ */
 size_t _num_free_bytes()
 {
     return stats.num_free_bytes;
 }
 
-// Returns the overall (free and used) number of allocated blocks in the heap.
+/**
+ * _num_allocated_blocks - Returns the number of allocated blocks.
+ * @return: The total number of allocated blocks.
+ */
 size_t _num_allocated_blocks()
 {
     return stats.num_allocated_blocks;
 }
 
-// Returns the overall number (free and used) of allocated bytes in the heap, excluding
-// the bytes used by the meta-data structs.
+/**
+ * _num_allocated_bytes - Returns the number of allocated bytes.
+ * @return: The total number of allocated bytes, excluding metadata.
+ */
 size_t _num_allocated_bytes()
 {
     return stats.num_allocated_bytes;
 }
 
-// Returns the overall number of meta-data bytes currently in the heap.
+/**
+ * _num_meta_data_bytes - Returns the number of metadata bytes.
+ * @return: The total number of metadata bytes currently in use.
+ */
 size_t _num_meta_data_bytes()
 {
     return stats.num_meta_data_bytes;
 }
 
-// Returns the number of bytes of a single meta-data structure in your system.
+/**
+ * _size_meta_data - Returns the size of a single metadata structure.
+ * @return: The size of one metadata structure.
+ */
 size_t _size_meta_data()
 {
     return stats.size_meta_data;

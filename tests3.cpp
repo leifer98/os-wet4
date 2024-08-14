@@ -9,7 +9,7 @@ struct metaData
     metaData *next;
     metaData *prev;
 };
-
+void printArr();
 void printList();
 void markAllBlocksNotFree();
 
@@ -309,7 +309,9 @@ int main()
 
     printList();*/
     std::cout << "check1." << std::endl;
-    void *ptr = smalloc(567);
+    void *ptr1 = smalloc(16384);
+    // void *ptr2 = smalloc(15);
+    printArr();
 
     std::cout << "All tests completed." << std::endl;
     return 0;
