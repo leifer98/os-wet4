@@ -11,7 +11,18 @@
         "utility": "cpp",
         "iostream": "cpp",
         "charconv": "cpp",
-        "xmemory": "cpp"
+        "xmemory": "cpp",
+        "array": "cpp",
+        "deque": "cpp",
+        "list": "cpp",
+        "stack": "cpp",
+        "vector": "cpp",
+        "xhash": "cpp",
+        "xtree": "cpp",
+        "random": "cpp",
+        "ranges": "cpp",
+        "regex": "cpp",
+        "span": "cpp"
     },
     "CodeGPT.apiKey": "OpenAI"
 }

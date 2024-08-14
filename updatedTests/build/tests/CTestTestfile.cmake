@@ -7,5 +7,4 @@
 include("/mnt/c/Users/user/Documents/os/wet4/updatedTests/build/tests/malloc_1_test_include-b12d07c.cmake")
 include("/mnt/c/Users/user/Documents/os/wet4/updatedTests/build/tests/malloc_2_test_include-b12d07c.cmake")
 include("/mnt/c/Users/user/Documents/os/wet4/updatedTests/build/tests/malloc_3_test_include-b12d07c.cmake")
-include("/mnt/c/Users/user/Documents/os/wet4/updatedTests/build/tests/malloc_4_test_include-b12d07c.cmake")
 subdirs("../_deps/catch2-build")

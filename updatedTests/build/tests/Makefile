@@ -550,20 +550,6 @@ malloc_3_test/fast:
 	cd /mnt/c/Users/user/Documents/os/wet4/updatedTests/build && $(MAKE) $(MAKESILENT) -f tests/CMakeFiles/malloc_3_test.dir/build.make tests/CMakeFiles/malloc_3_test.dir/build
 .PHONY : malloc_3_test/fast
 
-# Convenience name for target.
-tests/CMakeFiles/malloc_4_test.dir/rule:
-	cd /mnt/c/Users/user/Documents/os/wet4/updatedTests/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 tests/CMakeFiles/malloc_4_test.dir/rule
-.PHONY : tests/CMakeFiles/malloc_4_test.dir/rule
-
-# Convenience name for target.
-malloc_4_test: tests/CMakeFiles/malloc_4_test.dir/rule
-.PHONY : malloc_4_test
-
-# fast build rule for target.
-malloc_4_test/fast:
-	cd /mnt/c/Users/user/Documents/os/wet4/updatedTests/build && $(MAKE) $(MAKESILENT) -f tests/CMakeFiles/malloc_4_test.dir/build.make tests/CMakeFiles/malloc_4_test.dir/build
-.PHONY : malloc_4_test/fast
-
 __/malloc_1.o: __/malloc_1.cpp.o
 .PHONY : __/malloc_1.o
 
@@ -636,30 +622,6 @@ __/malloc_3.cpp.s:
 	cd /mnt/c/Users/user/Documents/os/wet4/updatedTests/build && $(MAKE) $(MAKESILENT) -f tests/CMakeFiles/malloc_3_test.dir/build.make tests/CMakeFiles/malloc_3_test.dir/__/malloc_3.cpp.s
 .PHONY : __/malloc_3.cpp.s
 
-__/malloc_4.o: __/malloc_4.cpp.o
-.PHONY : __/malloc_4.o
-
-# target to build an object file
-__/malloc_4.cpp.o:
-	cd /mnt/c/Users/user/Documents/os/wet4/updatedTests/build && $(MAKE) $(MAKESILENT) -f tests/CMakeFiles/malloc_4_test.dir/build.make tests/CMakeFiles/malloc_4_test.dir/__/malloc_4.cpp.o
-.PHONY : __/malloc_4.cpp.o
-
-__/malloc_4.i: __/malloc_4.cpp.i
-.PHONY : __/malloc_4.i
-
-# target to preprocess a source file
-__/malloc_4.cpp.i:
-	cd /mnt/c/Users/user/Documents/os/wet4/updatedTests/build && $(MAKE) $(MAKESILENT) -f tests/CMakeFiles/malloc_4_test.dir/build.make tests/CMakeFiles/malloc_4_test.dir/__/malloc_4.cpp.i
-.PHONY : __/malloc_4.cpp.i
-
-__/malloc_4.s: __/malloc_4.cpp.s
-.PHONY : __/malloc_4.s
-
-# target to generate assembly for a file
-__/malloc_4.cpp.s:
-	cd /mnt/c/Users/user/Documents/os/wet4/updatedTests/build && $(MAKE) $(MAKESILENT) -f tests/CMakeFiles/malloc_4_test.dir/build.make tests/CMakeFiles/malloc_4_test.dir/__/malloc_4.cpp.s
-.PHONY : __/malloc_4.cpp.s
-
 malloc_1_test.o: malloc_1_test.cpp.o
 .PHONY : malloc_1_test.o
 
@@ -714,7 +676,6 @@ malloc_3_test_basic.o: malloc_3_test_basic.cpp.o
 # target to build an object file
 malloc_3_test_basic.cpp.o:
 	cd /mnt/c/Users/user/Documents/os/wet4/updatedTests/build && $(MAKE) $(MAKESILENT) -f tests/CMakeFiles/malloc_3_test.dir/build.make tests/CMakeFiles/malloc_3_test.dir/malloc_3_test_basic.cpp.o
-	cd /mnt/c/Users/user/Documents/os/wet4/updatedTests/build && $(MAKE) $(MAKESILENT) -f tests/CMakeFiles/malloc_4_test.dir/build.make tests/CMakeFiles/malloc_4_test.dir/malloc_3_test_basic.cpp.o
 .PHONY : malloc_3_test_basic.cpp.o
 
 malloc_3_test_basic.i: malloc_3_test_basic.cpp.i
@@ -723,7 +684,6 @@ malloc_3_test_basic.i: malloc_3_test_basic.cpp.i
 # target to preprocess a source file
 malloc_3_test_basic.cpp.i:
 	cd /mnt/c/Users/user/Documents/os/wet4/updatedTests/build && $(MAKE) $(MAKESILENT) -f tests/CMakeFiles/malloc_3_test.dir/build.make tests/CMakeFiles/malloc_3_test.dir/malloc_3_test_basic.cpp.i
-	cd /mnt/c/Users/user/Documents/os/wet4/updatedTests/build && $(MAKE) $(MAKESILENT) -f tests/CMakeFiles/malloc_4_test.dir/build.make tests/CMakeFiles/malloc_4_test.dir/malloc_3_test_basic.cpp.i
 .PHONY : malloc_3_test_basic.cpp.i
 
 malloc_3_test_basic.s: malloc_3_test_basic.cpp.s
@@ -732,152 +692,7 @@ malloc_3_test_basic.s: malloc_3_test_basic.cpp.s
 # target to generate assembly for a file
 malloc_3_test_basic.cpp.s:
 	cd /mnt/c/Users/user/Documents/os/wet4/updatedTests/build && $(MAKE) $(MAKESILENT) -f tests/CMakeFiles/malloc_3_test.dir/build.make tests/CMakeFiles/malloc_3_test.dir/malloc_3_test_basic.cpp.s
-	cd /mnt/c/Users/user/Documents/os/wet4/updatedTests/build && $(MAKE) $(MAKESILENT) -f tests/CMakeFiles/malloc_4_test.dir/build.make tests/CMakeFiles/malloc_4_test.dir/malloc_3_test_basic.cpp.s
 .PHONY : malloc_3_test_basic.cpp.s
-
-malloc_3_test_reuse.o: malloc_3_test_reuse.cpp.o
-.PHONY : malloc_3_test_reuse.o
-
-# target to build an object file
-malloc_3_test_reuse.cpp.o:
-	cd /mnt/c/Users/user/Documents/os/wet4/updatedTests/build && $(MAKE) $(MAKESILENT) -f tests/CMakeFiles/malloc_4_test.dir/build.make tests/CMakeFiles/malloc_4_test.dir/malloc_3_test_reuse.cpp.o
-.PHONY : malloc_3_test_reuse.cpp.o
-
-malloc_3_test_reuse.i: malloc_3_test_reuse.cpp.i
-.PHONY : malloc_3_test_reuse.i
-
-# target to preprocess a source file
-malloc_3_test_reuse.cpp.i:
-	cd /mnt/c/Users/user/Documents/os/wet4/updatedTests/build && $(MAKE) $(MAKESILENT) -f tests/CMakeFiles/malloc_4_test.dir/build.make tests/CMakeFiles/malloc_4_test.dir/malloc_3_test_reuse.cpp.i
-.PHONY : malloc_3_test_reuse.cpp.i
-
-malloc_3_test_reuse.s: malloc_3_test_reuse.cpp.s
-.PHONY : malloc_3_test_reuse.s
-
-# target to generate assembly for a file
-malloc_3_test_reuse.cpp.s:
-	cd /mnt/c/Users/user/Documents/os/wet4/updatedTests/build && $(MAKE) $(MAKESILENT) -f tests/CMakeFiles/malloc_4_test.dir/build.make tests/CMakeFiles/malloc_4_test.dir/malloc_3_test_reuse.cpp.s
-.PHONY : malloc_3_test_reuse.cpp.s
-
-malloc_3_test_scalloc.o: malloc_3_test_scalloc.cpp.o
-.PHONY : malloc_3_test_scalloc.o
-
-# target to build an object file
-malloc_3_test_scalloc.cpp.o:
-	cd /mnt/c/Users/user/Documents/os/wet4/updatedTests/build && $(MAKE) $(MAKESILENT) -f tests/CMakeFiles/malloc_4_test.dir/build.make tests/CMakeFiles/malloc_4_test.dir/malloc_3_test_scalloc.cpp.o
-.PHONY : malloc_3_test_scalloc.cpp.o
-
-malloc_3_test_scalloc.i: malloc_3_test_scalloc.cpp.i
-.PHONY : malloc_3_test_scalloc.i
-
-# target to preprocess a source file
-malloc_3_test_scalloc.cpp.i:
-	cd /mnt/c/Users/user/Documents/os/wet4/updatedTests/build && $(MAKE) $(MAKESILENT) -f tests/CMakeFiles/malloc_4_test.dir/build.make tests/CMakeFiles/malloc_4_test.dir/malloc_3_test_scalloc.cpp.i
-.PHONY : malloc_3_test_scalloc.cpp.i
-
-malloc_3_test_scalloc.s: malloc_3_test_scalloc.cpp.s
-.PHONY : malloc_3_test_scalloc.s
-
-# target to generate assembly for a file
-malloc_3_test_scalloc.cpp.s:
-	cd /mnt/c/Users/user/Documents/os/wet4/updatedTests/build && $(MAKE) $(MAKESILENT) -f tests/CMakeFiles/malloc_4_test.dir/build.make tests/CMakeFiles/malloc_4_test.dir/malloc_3_test_scalloc.cpp.s
-.PHONY : malloc_3_test_scalloc.cpp.s
-
-malloc_3_test_split_and_merge.o: malloc_3_test_split_and_merge.cpp.o
-.PHONY : malloc_3_test_split_and_merge.o
-
-# target to build an object file
-malloc_3_test_split_and_merge.cpp.o:
-	cd /mnt/c/Users/user/Documents/os/wet4/updatedTests/build && $(MAKE) $(MAKESILENT) -f tests/CMakeFiles/malloc_4_test.dir/build.make tests/CMakeFiles/malloc_4_test.dir/malloc_3_test_split_and_merge.cpp.o
-.PHONY : malloc_3_test_split_and_merge.cpp.o
-
-malloc_3_test_split_and_merge.i: malloc_3_test_split_and_merge.cpp.i
-.PHONY : malloc_3_test_split_and_merge.i
-
-# target to preprocess a source file
-malloc_3_test_split_and_merge.cpp.i:
-	cd /mnt/c/Users/user/Documents/os/wet4/updatedTests/build && $(MAKE) $(MAKESILENT) -f tests/CMakeFiles/malloc_4_test.dir/build.make tests/CMakeFiles/malloc_4_test.dir/malloc_3_test_split_and_merge.cpp.i
-.PHONY : malloc_3_test_split_and_merge.cpp.i
-
-malloc_3_test_split_and_merge.s: malloc_3_test_split_and_merge.cpp.s
-.PHONY : malloc_3_test_split_and_merge.s
-
-# target to generate assembly for a file
-malloc_3_test_split_and_merge.cpp.s:
-	cd /mnt/c/Users/user/Documents/os/wet4/updatedTests/build && $(MAKE) $(MAKESILENT) -f tests/CMakeFiles/malloc_4_test.dir/build.make tests/CMakeFiles/malloc_4_test.dir/malloc_3_test_split_and_merge.cpp.s
-.PHONY : malloc_3_test_split_and_merge.cpp.s
-
-malloc_3_test_srealloc.o: malloc_3_test_srealloc.cpp.o
-.PHONY : malloc_3_test_srealloc.o
-
-# target to build an object file
-malloc_3_test_srealloc.cpp.o:
-	cd /mnt/c/Users/user/Documents/os/wet4/updatedTests/build && $(MAKE) $(MAKESILENT) -f tests/CMakeFiles/malloc_4_test.dir/build.make tests/CMakeFiles/malloc_4_test.dir/malloc_3_test_srealloc.cpp.o
-.PHONY : malloc_3_test_srealloc.cpp.o
-
-malloc_3_test_srealloc.i: malloc_3_test_srealloc.cpp.i
-.PHONY : malloc_3_test_srealloc.i
-
-# target to preprocess a source file
-malloc_3_test_srealloc.cpp.i:
-	cd /mnt/c/Users/user/Documents/os/wet4/updatedTests/build && $(MAKE) $(MAKESILENT) -f tests/CMakeFiles/malloc_4_test.dir/build.make tests/CMakeFiles/malloc_4_test.dir/malloc_3_test_srealloc.cpp.i
-.PHONY : malloc_3_test_srealloc.cpp.i
-
-malloc_3_test_srealloc.s: malloc_3_test_srealloc.cpp.s
-.PHONY : malloc_3_test_srealloc.s
-
-# target to generate assembly for a file
-malloc_3_test_srealloc.cpp.s:
-	cd /mnt/c/Users/user/Documents/os/wet4/updatedTests/build && $(MAKE) $(MAKESILENT) -f tests/CMakeFiles/malloc_4_test.dir/build.make tests/CMakeFiles/malloc_4_test.dir/malloc_3_test_srealloc.cpp.s
-.PHONY : malloc_3_test_srealloc.cpp.s
-
-malloc_3_test_srealloc_cases.o: malloc_3_test_srealloc_cases.cpp.o
-.PHONY : malloc_3_test_srealloc_cases.o
-
-# target to build an object file
-malloc_3_test_srealloc_cases.cpp.o:
-	cd /mnt/c/Users/user/Documents/os/wet4/updatedTests/build && $(MAKE) $(MAKESILENT) -f tests/CMakeFiles/malloc_4_test.dir/build.make tests/CMakeFiles/malloc_4_test.dir/malloc_3_test_srealloc_cases.cpp.o
-.PHONY : malloc_3_test_srealloc_cases.cpp.o
-
-malloc_3_test_srealloc_cases.i: malloc_3_test_srealloc_cases.cpp.i
-.PHONY : malloc_3_test_srealloc_cases.i
-
-# target to preprocess a source file
-malloc_3_test_srealloc_cases.cpp.i:
-	cd /mnt/c/Users/user/Documents/os/wet4/updatedTests/build && $(MAKE) $(MAKESILENT) -f tests/CMakeFiles/malloc_4_test.dir/build.make tests/CMakeFiles/malloc_4_test.dir/malloc_3_test_srealloc_cases.cpp.i
-.PHONY : malloc_3_test_srealloc_cases.cpp.i
-
-malloc_3_test_srealloc_cases.s: malloc_3_test_srealloc_cases.cpp.s
-.PHONY : malloc_3_test_srealloc_cases.s
-
-# target to generate assembly for a file
-malloc_3_test_srealloc_cases.cpp.s:
-	cd /mnt/c/Users/user/Documents/os/wet4/updatedTests/build && $(MAKE) $(MAKESILENT) -f tests/CMakeFiles/malloc_4_test.dir/build.make tests/CMakeFiles/malloc_4_test.dir/malloc_3_test_srealloc_cases.cpp.s
-.PHONY : malloc_3_test_srealloc_cases.cpp.s
-
-malloc_4_test.o: malloc_4_test.cpp.o
-.PHONY : malloc_4_test.o
-
-# target to build an object file
-malloc_4_test.cpp.o:
-	cd /mnt/c/Users/user/Documents/os/wet4/updatedTests/build && $(MAKE) $(MAKESILENT) -f tests/CMakeFiles/malloc_4_test.dir/build.make tests/CMakeFiles/malloc_4_test.dir/malloc_4_test.cpp.o
-.PHONY : malloc_4_test.cpp.o
-
-malloc_4_test.i: malloc_4_test.cpp.i
-.PHONY : malloc_4_test.i
-
-# target to preprocess a source file
-malloc_4_test.cpp.i:
-	cd /mnt/c/Users/user/Documents/os/wet4/updatedTests/build && $(MAKE) $(MAKESILENT) -f tests/CMakeFiles/malloc_4_test.dir/build.make tests/CMakeFiles/malloc_4_test.dir/malloc_4_test.cpp.i
-.PHONY : malloc_4_test.cpp.i
-
-malloc_4_test.s: malloc_4_test.cpp.s
-.PHONY : malloc_4_test.s
-
-# target to generate assembly for a file
-malloc_4_test.cpp.s:
-	cd /mnt/c/Users/user/Documents/os/wet4/updatedTests/build && $(MAKE) $(MAKESILENT) -f tests/CMakeFiles/malloc_4_test.dir/build.make tests/CMakeFiles/malloc_4_test.dir/malloc_4_test.cpp.s
-.PHONY : malloc_4_test.cpp.s
 
 # Help Target
 help:
@@ -918,7 +733,6 @@ help:
 	@echo "... malloc_1_test"
 	@echo "... malloc_2_test"
 	@echo "... malloc_3_test"
-	@echo "... malloc_4_test"
 	@echo "... __/malloc_1.o"
 	@echo "... __/malloc_1.i"
 	@echo "... __/malloc_1.s"
@@ -928,9 +742,6 @@ help:
 	@echo "... __/malloc_3.o"
 	@echo "... __/malloc_3.i"
 	@echo "... __/malloc_3.s"
-	@echo "... __/malloc_4.o"
-	@echo "... __/malloc_4.i"
-	@echo "... __/malloc_4.s"
 	@echo "... malloc_1_test.o"
 	@echo "... malloc_1_test.i"
 	@echo "... malloc_1_test.s"
@@ -940,24 +751,6 @@ help:
 	@echo "... malloc_3_test_basic.o"
 	@echo "... malloc_3_test_basic.i"
 	@echo "... malloc_3_test_basic.s"
-	@echo "... malloc_3_test_reuse.o"
-	@echo "... malloc_3_test_reuse.i"
-	@echo "... malloc_3_test_reuse.s"
-	@echo "... malloc_3_test_scalloc.o"
-	@echo "... malloc_3_test_scalloc.i"
-	@echo "... malloc_3_test_scalloc.s"
-	@echo "... malloc_3_test_split_and_merge.o"
-	@echo "... malloc_3_test_split_and_merge.i"
-	@echo "... malloc_3_test_split_and_merge.s"
-	@echo "... malloc_3_test_srealloc.o"
-	@echo "... malloc_3_test_srealloc.i"
-	@echo "... malloc_3_test_srealloc.s"
-	@echo "... malloc_3_test_srealloc_cases.o"
-	@echo "... malloc_3_test_srealloc_cases.i"
-	@echo "... malloc_3_test_srealloc_cases.s"
-	@echo "... malloc_4_test.o"
-	@echo "... malloc_4_test.i"
-	@echo "... malloc_4_test.s"
 .PHONY : help
 
 

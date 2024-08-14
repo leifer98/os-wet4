@@ -1,5 +1,5 @@
-tests/CMakeFiles/malloc_2_test.dir/__/malloc_2.cpp.o: \
- /mnt/c/Users/user/Documents/os/wet4/updatedTests/malloc_2.cpp \
+tests/CMakeFiles/malloc_3_test.dir/__/malloc_3.cpp.o: \
+ /mnt/c/Users/user/Documents/os/wet4/updatedTests/malloc_3.cpp \
  /usr/include/stdc-predef.h /usr/include/unistd.h /usr/include/features.h \
  /usr/include/features-time64.h \
  /usr/include/x86_64-linux-gnu/bits/wordsize.h \

@@ -108,7 +108,6 @@ set(CMAKE_DEPEND_INFO_FILES
   "tests/CMakeFiles/malloc_1_test.dir/DependInfo.cmake"
   "tests/CMakeFiles/malloc_2_test.dir/DependInfo.cmake"
   "tests/CMakeFiles/malloc_3_test.dir/DependInfo.cmake"
-  "tests/CMakeFiles/malloc_4_test.dir/DependInfo.cmake"
   "_deps/catch2-build/src/CMakeFiles/Catch2.dir/DependInfo.cmake"
   "_deps/catch2-build/src/CMakeFiles/Catch2WithMain.dir/DependInfo.cmake"
   )

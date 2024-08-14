@@ -113,7 +113,6 @@ _deps/catch2-build/src/clean: _deps/catch2-build/src/CMakeFiles/Catch2WithMain.d
 tests/all: tests/CMakeFiles/malloc_1_test.dir/all
 tests/all: tests/CMakeFiles/malloc_2_test.dir/all
 tests/all: tests/CMakeFiles/malloc_3_test.dir/all
-tests/all: tests/CMakeFiles/malloc_4_test.dir/all
 tests/all: _deps/catch2-build/all
 .PHONY : tests/all
 
@@ -153,7 +152,6 @@ tests/clean: tests/CMakeFiles/ContinuousSubmit.dir/clean
 tests/clean: tests/CMakeFiles/malloc_1_test.dir/clean
 tests/clean: tests/CMakeFiles/malloc_2_test.dir/clean
 tests/clean: tests/CMakeFiles/malloc_3_test.dir/clean
-tests/clean: tests/CMakeFiles/malloc_4_test.dir/clean
 tests/clean: _deps/catch2-build/clean
 .PHONY : tests/clean
 
@@ -965,33 +963,6 @@ malloc_3_test: tests/CMakeFiles/malloc_3_test.dir/rule
 tests/CMakeFiles/malloc_3_test.dir/clean:
 	$(MAKE) $(MAKESILENT) -f tests/CMakeFiles/malloc_3_test.dir/build.make tests/CMakeFiles/malloc_3_test.dir/clean
 .PHONY : tests/CMakeFiles/malloc_3_test.dir/clean
-
-#=============================================================================
-# Target rules for target tests/CMakeFiles/malloc_4_test.dir
-
-# All Build rule for target.
-tests/CMakeFiles/malloc_4_test.dir/all: _deps/catch2-build/src/CMakeFiles/Catch2.dir/all
-tests/CMakeFiles/malloc_4_test.dir/all: _deps/catch2-build/src/CMakeFiles/Catch2WithMain.dir/all
-	$(MAKE) $(MAKESILENT) -f tests/CMakeFiles/malloc_4_test.dir/build.make tests/CMakeFiles/malloc_4_test.dir/depend
-	$(MAKE) $(MAKESILENT) -f tests/CMakeFiles/malloc_4_test.dir/build.make tests/CMakeFiles/malloc_4_test.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/mnt/c/Users/user/Documents/os/wet4/updatedTests/build/CMakeFiles --progress-num=89,90,91,92,93,94,95,96,97 "Built target malloc_4_test"
-.PHONY : tests/CMakeFiles/malloc_4_test.dir/all
-
-# Build rule for subdir invocation for target.
-tests/CMakeFiles/malloc_4_test.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/c/Users/user/Documents/os/wet4/updatedTests/build/CMakeFiles 88
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 tests/CMakeFiles/malloc_4_test.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/c/Users/user/Documents/os/wet4/updatedTests/build/CMakeFiles 0
-.PHONY : tests/CMakeFiles/malloc_4_test.dir/rule
-
-# Convenience name for target.
-malloc_4_test: tests/CMakeFiles/malloc_4_test.dir/rule
-.PHONY : malloc_4_test
-
-# clean rule for target.
-tests/CMakeFiles/malloc_4_test.dir/clean:
-	$(MAKE) $(MAKESILENT) -f tests/CMakeFiles/malloc_4_test.dir/build.make tests/CMakeFiles/malloc_4_test.dir/clean
-.PHONY : tests/CMakeFiles/malloc_4_test.dir/clean
 
 #=============================================================================
 # Target rules for target _deps/catch2-build/src/CMakeFiles/Catch2.dir

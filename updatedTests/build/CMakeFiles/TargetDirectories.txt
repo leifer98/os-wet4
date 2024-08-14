@@ -31,7 +31,6 @@
 /mnt/c/Users/user/Documents/os/wet4/updatedTests/build/tests/CMakeFiles/malloc_1_test.dir
 /mnt/c/Users/user/Documents/os/wet4/updatedTests/build/tests/CMakeFiles/malloc_2_test.dir
 /mnt/c/Users/user/Documents/os/wet4/updatedTests/build/tests/CMakeFiles/malloc_3_test.dir
-/mnt/c/Users/user/Documents/os/wet4/updatedTests/build/tests/CMakeFiles/malloc_4_test.dir
 /mnt/c/Users/user/Documents/os/wet4/updatedTests/build/tests/CMakeFiles/edit_cache.dir
 /mnt/c/Users/user/Documents/os/wet4/updatedTests/build/tests/CMakeFiles/rebuild_cache.dir
 /mnt/c/Users/user/Documents/os/wet4/updatedTests/build/_deps/catch2-build/CMakeFiles/edit_cache.dir

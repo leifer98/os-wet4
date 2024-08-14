@@ -11,7 +11,6 @@ struct metaData
 };
 
 void printList();
-
 void markAllBlocksNotFree();
 
 // Forward declaration of smalloc function
@@ -21,6 +20,14 @@ void *smalloc(size_t size);
 void *scalloc(size_t num, size_t size);
 
 void sfree(void *p);
+
+// Stats functions
+size_t _num_free_blocks();
+size_t _num_free_bytes();
+size_t _num_allocated_blocks();
+size_t _num_allocated_bytes();
+size_t _num_meta_data_bytes();
+size_t _size_meta_data();
 
 // Function to read metadata from a memory block
 metaData *getMetaData(void *ptr)
@@ -32,8 +39,11 @@ metaData *getMetaData(void *ptr)
 void test1()
 {
     markAllBlocksNotFree();
+    size_t initial_allocated_blocks = _num_allocated_blocks();
+
     void *ptr = smalloc(100000001);
-    if (ptr == nullptr)
+
+    if (ptr == nullptr && _num_allocated_blocks() == initial_allocated_blocks)
     {
         std::cout << "Test 1 passed: Could not allocate 100000001 bytes (as expected)." << std::endl;
     }
@@ -43,16 +53,30 @@ void test1()
     }
 }
 
-// Test 2: Allocate a block for "Sample string"
+// Test 2: Allocate a block for "Sample string" and verify metadata
 void test2()
 {
     markAllBlocksNotFree();
+    size_t initial_allocated_blocks = _num_allocated_blocks();
+    size_t initial_allocated_bytes = _num_allocated_bytes();
+
     const char *test_str = "Sample string";
     void *ptr = smalloc(strlen(test_str) + 1);
-    if (ptr != nullptr)
+
+    if (ptr != nullptr &&
+        _num_allocated_blocks() == initial_allocated_blocks + 1 &&
+        _num_allocated_bytes() == initial_allocated_bytes + strlen(test_str) + 1)
     {
         strcpy((char *)ptr, test_str);
-        std::cout << "Test 2 passed: Allocated and stored 'Sample string'." << std::endl;
+        metaData *meta = getMetaData(ptr);
+        if (meta->size == strlen(test_str) + 1 && !meta->is_free)
+        {
+            std::cout << "Test 2 passed: 'Sample string' allocated and metadata verified." << std::endl;
+        }
+        else
+        {
+            std::cerr << "Test 2 failed: Metadata mismatch for 'Sample string'." << std::endl;
+        }
     }
     else
     {
@@ -64,8 +88,11 @@ void test2()
 void test3()
 {
     markAllBlocksNotFree();
+    size_t initial_allocated_blocks = _num_allocated_blocks();
+
     void *ptr = smalloc(0);
-    if (ptr == nullptr)
+
+    if (ptr == nullptr && _num_allocated_blocks() == initial_allocated_blocks)
     {
         std::cout << "Test 3 passed: Allocation of 0 bytes correctly returned NULL." << std::endl;
     }
@@ -75,88 +102,41 @@ void test3()
     }
 }
 
-// Test 4: Allocate a block of 100000001 bytes (should fail)
+// Test 4: Allocate exactly 1 byte (edge case)
 void test4()
 {
     markAllBlocksNotFree();
-    void *ptr = smalloc(100000001);
-    if (ptr == nullptr)
+    size_t initial_allocated_blocks = _num_allocated_blocks();
+    size_t initial_allocated_bytes = _num_allocated_bytes();
+
+    void *ptr = smalloc(1);
+
+    if (ptr != nullptr &&
+        _num_allocated_blocks() == initial_allocated_blocks + 1 &&
+        _num_allocated_bytes() == initial_allocated_bytes + 1)
     {
-        std::cout << "Test 4 passed: Could not allocate 100000001 bytes (as expected)." << std::endl;
+        std::cout << "Test 4 passed: Allocated 1 byte successfully." << std::endl;
     }
     else
     {
-        std::cerr << "Test 4 failed: Unexpectedly allocated 100000001 bytes." << std::endl;
+        std::cerr << "Test 4 failed: Could not allocate 1 byte." << std::endl;
     }
 }
 
-// Test 5: Allocate exactly 1 byte (edge case)
+// Test 5: Allocate "Sample string" twice and verify metadata
 void test5()
 {
     markAllBlocksNotFree();
-    void *ptr = smalloc(1);
-    if (ptr != nullptr)
-    {
-        std::cout << "Test 5 passed: Allocated 1 byte successfully." << std::endl;
-    }
-    else
-    {
-        std::cerr << "Test 5 failed: Could not allocate 1 byte." << std::endl;
-    }
-}
+    size_t initial_allocated_blocks = _num_allocated_blocks();
+    size_t initial_allocated_bytes = _num_allocated_bytes();
 
-// Test 6: Allocate "Sample string" twice
-void test6()
-{
-    markAllBlocksNotFree();
     const char *test_str = "Sample string";
     void *ptr1 = smalloc(strlen(test_str) + 1);
     void *ptr2 = smalloc(strlen(test_str) + 1);
-    if (ptr1 != nullptr && ptr2 != nullptr)
-    {
-        strcpy((char *)ptr1, test_str);
-        strcpy((char *)ptr2, test_str);
-        std::cout << "Test 6 passed: Multiple allocations of 'Sample string' succeeded." << std::endl;
-    }
-    else
-    {
-        std::cerr << "Test 6 failed: Multiple allocations of 'Sample string' did not succeed." << std::endl;
-    }
-}
 
-// Test 7: Insert and verify "Sample string"
-void test7()
-{
-    markAllBlocksNotFree();
-    const char *test_str = "Sample string";
-    void *ptr = smalloc(strlen(test_str) + 1);
-    if (ptr != nullptr)
-    {
-        strcpy((char *)ptr, test_str);
-        metaData *meta = getMetaData(ptr);
-        if (meta->size == strlen(test_str) + 1 && !meta->is_free)
-        {
-            std::cout << "Test 7 passed: 'Sample string' allocated and metadata verified." << std::endl;
-        }
-        else
-        {
-            std::cerr << "Test 7 failed: Metadata mismatch for 'Sample string'." << std::endl;
-        }
-    }
-    else
-    {
-        std::cerr << "Test 7 failed: Could not allocate memory for 'Sample string'." << std::endl;
-    }
-}
-
-// Test 8: Allocate multiple "Sample string" and verify metadata in a sequence
-void test8()
-{
-    markAllBlocksNotFree();
-    const char *test_str = "Sample string";
-    void *ptr1 = smalloc(strlen(test_str) + 1);
-    void *ptr2 = smalloc(strlen(test_str) + 1);
-    if (ptr1 != nullptr && ptr2 != nullptr)
+    if (ptr1 != nullptr && ptr2 != nullptr &&
+        _num_allocated_blocks() == initial_allocated_blocks + 2 &&
+        _num_allocated_bytes() == initial_allocated_bytes + 2 * (strlen(test_str) + 1))
     {
         strcpy((char *)ptr1, test_str);
         strcpy((char *)ptr2, test_str);
@@ -166,118 +146,65 @@ void test8()
             meta2->size == strlen(test_str) + 1 && !meta2->is_free &&
             meta1->next == meta2 && meta2->prev == meta1)
         {
-            std::cout << "Test 8 passed: Multiple 'Sample string' allocated and metadata verified." << std::endl;
+            std::cout << "Test 5 passed: Multiple allocations of 'Sample string' succeeded and metadata verified." << std::endl;
         }
         else
         {
-            std::cerr << "Test 8 failed: Metadata mismatch or list linkage error for multiple 'Sample string'." << std::endl;
+            std::cerr << "Test 5 failed: Metadata mismatch or linkage error for multiple 'Sample string' allocations." << std::endl;
         }
     }
     else
     {
-        std::cerr << "Test 8 failed: Could not allocate memory for multiple 'Sample string'." << std::endl;
+        std::cerr << "Test 5 failed: Multiple allocations of 'Sample string' did not succeed." << std::endl;
     }
 }
 
-// Test 9: Insert "Sample string", free it using sfree, and check metadata
-void test9()
+// Test 6: Allocate "Sample string", free it using sfree, and check metadata
+void test6()
 {
     markAllBlocksNotFree();
+    size_t initial_free_blocks = _num_free_blocks();
+    size_t initial_free_bytes = _num_free_bytes();
+
     const char *test_str = "Sample string";
     void *ptr = smalloc(strlen(test_str) + 1);
+
     if (ptr != nullptr)
     {
         strcpy((char *)ptr, test_str);
         sfree(ptr); // Use sfree to free the block
         metaData *meta = getMetaData(ptr);
-        if (meta->is_free)
+        if (meta->is_free &&
+            _num_free_blocks() == initial_free_blocks + 1 &&
+            _num_free_bytes() == initial_free_bytes + strlen(test_str) + 1)
         {
-            std::cout << "Test 9 passed: 'Sample string' allocated, freed using sfree, and metadata verified." << std::endl;
+            std::cout << "Test 6 passed: 'Sample string' allocated, freed using sfree, and metadata verified." << std::endl;
         }
         else
         {
-            std::cerr << "Test 9 failed: Metadata not updated correctly on free." << std::endl;
+            std::cerr << "Test 6 failed: Metadata not updated correctly on free." << std::endl;
         }
     }
     else
     {
-        std::cerr << "Test 9 failed: Could not allocate memory for 'Sample string'." << std::endl;
+        std::cerr << "Test 6 failed: Could not allocate memory for 'Sample string'." << std::endl;
     }
 }
 
-// Test 10: Allocate "Sample string", simulate fragmentation using sfree
-void test10()
+// Test 7: Allocate a block with scalloc and check zero-initialization
+void test7()
 {
     markAllBlocksNotFree();
-    const char *str1 = "Sample string";
-    const char *str2 = "Sample string";
-    void *ptr1 = smalloc(strlen(str1) + 1);
-    void *ptr2 = smalloc(strlen(str2) + 1);
-    if (ptr1 != nullptr && ptr2 != nullptr)
-    {
-        strcpy((char *)ptr1, str1);
-        strcpy((char *)ptr2, str2);
-        sfree(ptr1); // Use sfree to free the first block
-        metaData *meta1 = getMetaData(ptr1);
-        metaData *meta2 = getMetaData(ptr2);
-        if (meta1->is_free && !meta2->is_free)
-        {
-            std::cout << "Test 10 passed: Simulated fragmentation with sfree and verified metadata." << std::endl;
-        }
-        else
-        {
-            std::cerr << "Test 10 failed: Fragmentation simulation failed." << std::endl;
-        }
-    }
-    else
-    {
-        std::cerr << "Test 10 failed: Could not allocate memory for 'Sample string'." << std::endl;
-    }
-}
+    size_t initial_allocated_blocks = _num_allocated_blocks();
+    size_t initial_allocated_bytes = _num_allocated_bytes();
 
-// Test 11: Insert multiple "Sample string", free them using sfree, and check tail pointer consistency
-void test11()
-{
-    markAllBlocksNotFree();
-    const char *str1 = "Sample string";
-    const char *str2 = "Sample string";
-    const char *str3 = "Sample string";
-    void *ptr1 = smalloc(strlen(str1) + 1);
-    void *ptr2 = smalloc(strlen(str2) + 1);
-    void *ptr3 = smalloc(strlen(str3) + 1);
-    if (ptr1 != nullptr && ptr2 != nullptr && ptr3 != nullptr)
-    {
-        strcpy((char *)ptr1, str1);
-        strcpy((char *)ptr2, str2);
-        strcpy((char *)ptr3, str3);
-        sfree(ptr1); // Use sfree to free the first block
-        sfree(ptr2); // Use sfree to free the second block
-        metaData *meta1 = getMetaData(ptr1);
-        metaData *meta2 = getMetaData(ptr2);
-        metaData *meta3 = getMetaData(ptr3);
-        if (meta3->prev == meta2)
-        {
-            std::cout << "Test 11 passed: Tail pointer consistency verified after using sfree." << std::endl;
-        }
-        else
-        {
-            std::cerr << "Test 11 failed: Tail pointer consistency failed." << std::endl;
-        }
-    }
-    else
-    {
-        std::cerr << "Test 11 failed: Could not allocate memory for multiple 'Sample string'." << std::endl;
-    }
-}
-
-// Test 12: Allocate a block with scalloc and check zero-initialization
-void test12()
-{
-    markAllBlocksNotFree();
     size_t num = 10;
     size_t size = strlen("Sample string") + 1;
     char *ptr = (char *)scalloc(num, size);
-    if (ptr != nullptr)
+
+    if (ptr != nullptr &&
+        _num_allocated_blocks() == initial_allocated_blocks + 1 &&
+        _num_allocated_bytes() == initial_allocated_bytes + num * size)
     {
         bool all_zero = true;
         for (size_t i = 0; i < num * size; ++i)
@@ -290,66 +217,80 @@ void test12()
         }
         if (all_zero)
         {
-            std::cout << "Test 12 passed: scalloc allocated and zero-initialized memory." << std::endl;
+            std::cout << "Test 7 passed: scalloc allocated and zero-initialized memory." << std::endl;
         }
         else
         {
-            std::cerr << "Test 12 failed: scalloc did not zero-initialize memory." << std::endl;
+            std::cerr << "Test 7 failed: scalloc did not zero-initialize memory." << std::endl;
         }
     }
     else
     {
-        std::cerr << "Test 12 failed: Could not allocate memory with scalloc." << std::endl;
+        std::cerr << "Test 7 failed: Could not allocate memory with scalloc." << std::endl;
     }
 }
 
-// Test 13: Allocate with scalloc with num or size as 0 (should return NULL)
-void test13()
+// Test 8: Allocate with scalloc with num or size as 0 (should return NULL)
+void test8()
 {
     markAllBlocksNotFree();
+    size_t initial_allocated_blocks = _num_allocated_blocks();
+
     void *ptr1 = scalloc(0, strlen("Sample string") + 1);
     void *ptr2 = scalloc(10, 0);
-    if (ptr1 == nullptr && ptr2 == nullptr)
+
+    if (ptr1 == nullptr && ptr2 == nullptr &&
+        _num_allocated_blocks() == initial_allocated_blocks)
     {
-        std::cout << "Test 13 passed: scalloc returned NULL when num or size is 0." << std::endl;
+        std::cout << "Test 8 passed: scalloc returned NULL when num or size is 0." << std::endl;
     }
     else
     {
-        std::cerr << "Test 13 failed: scalloc should return NULL when num or size is 0." << std::endl;
+        std::cerr << "Test 8 failed: scalloc should return NULL when num or size is 0." << std::endl;
     }
 }
 
-// Test 14: Allocate with scalloc with size * num > 100000000 bytes (should return NULL)
-void test14()
+// Test 9: Allocate with scalloc with size * num > 100000000 bytes (should return NULL)
+void test9()
 {
     markAllBlocksNotFree();
+    size_t initial_allocated_blocks = _num_allocated_blocks();
+
     size_t num = 100000001; // Choose values that exceed the 100000000-byte limit
     size_t size = 1;
     void *ptr = scalloc(num, size);
-    if (ptr == nullptr)
+
+    if (ptr == nullptr &&
+        _num_allocated_blocks() == initial_allocated_blocks)
     {
-        std::cout << "Test 14 passed: scalloc returned NULL when size * num exceeds 100000000 bytes." << std::endl;
+        std::cout << "Test 9 passed: scalloc returned NULL when size * num exceeds 100000000 bytes." << std::endl;
     }
     else
     {
-        std::cerr << "Test 14 failed: scalloc should return NULL when size * num exceeds 100000000 bytes." << std::endl;
+        std::cerr << "Test 9 failed: scalloc should return NULL when size * num exceeds 100000000 bytes." << std::endl;
     }
 }
 
-// Test 15: Allocate a block with scalloc exactly equal to 100000000 bytes
-void test15()
+// Test 10: Allocate a block with scalloc exactly equal to 100000000 bytes
+void test10()
 {
     markAllBlocksNotFree();
+    size_t initial_allocated_blocks = _num_allocated_blocks();
+    size_t initial_allocated_bytes = _num_allocated_bytes();
+
     size_t num = 100000000; // Allocate exactly 100000000 bytes
     size_t size = 1;
     void *ptr = scalloc(num, size);
-    if (ptr != nullptr)
+
+    if (ptr != nullptr &&
+        _num_allocated_blocks() == initial_allocated_blocks + 1 &&
+        _num_allocated_bytes() == initial_allocated_bytes + num * size)
     {
-        std::cout << "Test 15 passed: scalloc successfully allocated 100000000 bytes." << std::endl;
+        std::cout << "Test 10 passed: scalloc successfully allocated 100000000 bytes." << std::endl;
     }
     else
     {
-        std::cerr << "Test 15 failed: scalloc should have allocated 100000000 bytes." << std::endl;
+        std::cerr << "Test 10 failed: scalloc should have allocated 100000000 bytes." << std::endl;
     }
 }
 
@@ -365,11 +306,6 @@ int main()
     test8();
     test9();
     test10();
-    test11();
-    test12();
-    test13();
-    test14();
-    test15();
 
     printList();
 
