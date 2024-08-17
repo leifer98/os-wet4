@@ -15,7 +15,7 @@ typedef struct MallocMetadata
     bool is_free;          // Indicates if the block is free or allocated
     MallocMetadata *next;  // Pointer to the next block in the list
     MallocMetadata *prev;  // Pointer to the previous block in the list
-    MallocMetadata *buddy; // Pointer to the buddy block in the buddy system
+    MallocMetadata *buddy[9]; // Array of pointers to buddies in different levels
 } metaData;
 
 // Structure to hold statistics about the memory allocation
@@ -145,12 +145,16 @@ void create()
     for (size_t i = 0; i < 31; i++)
     {
         metaData *curr = (metaData *)((char *)temp + 131072);
+        for (int i = 0; i < 10; i++){
+            curr->buddy[i] = nullptr;
+        }
         curr->is_free = true;
         curr->order = 10;
         temp->next = curr;
         curr->prev = temp;
         temp = temp->next;
     }
+    printArr();
     created = true;
 }
 
@@ -160,17 +164,16 @@ void create()
  */
 void addCellToArr(metaData *cell)
 {
-    cout << "cell info: " << cell << ",prev: " << cell->prev << ", next: " << (cell->next == nullptr) << endl;
+    //cout << "cell info: " << cell << ",prev: " << cell->prev << ", next: " << (cell->next == nullptr) << endl;
     int order = cell->order;
-    cout << "Adding block to order " << order << endl;
+    //cout << "Adding block to order " << order << endl;
     metaData *cur = arr[order];
     if (cur == nullptr)
     {
-        cout << "cell here" << endl;
         arr[order] = cell;
         return;
     }
-    cout << cur << endl;
+    //cout << cur << endl;
     while (cur < cell)
     {
         if (cur->next == nullptr)
@@ -202,8 +205,9 @@ void addCellToArr(metaData *cell)
  */
 void splitSingleCell(size_t order, metaData *currentMeta)
 {
-    cout << "check 123 : Splitting block with order " << currentMeta->order << " to match order " << order << endl;
+    //cout << "check 123 : Splitting block with order " << currentMeta->order << " to match order " << order << endl;
     if (order >= currentMeta->order){
+        //cout << "removing from arr. prev,next are: " << currentMeta->prev << "," << currentMeta->next << std::endl;
         metaData* bef = currentMeta->prev;
         metaData* aft = currentMeta->next;
         if (bef != nullptr){
@@ -216,14 +220,25 @@ void splitSingleCell(size_t order, metaData *currentMeta)
             aft->prev = bef;
         }
         //cout << "HERE4" << endl;
-        cout << "\nfinished\n" << endl;
-        printArr();
+        //cout << "\nfinished\n" << endl;
+        //printArr();
+        currentMeta->prev = nullptr;
+        currentMeta->next = nullptr;
         return;
     }
     currentMeta->order--;
     metaData *newCell = (metaData *)((char *)currentMeta + pairs[currentMeta->order][0]);
     newCell->order = currentMeta->order;
-    cout << "new order is " << newCell->order << endl;
+    for (int i = 0; i < 10; i++){
+        if (i == newCell->order){
+            newCell->buddy[i] = currentMeta;
+            currentMeta->buddy[i] = newCell;
+        }
+        else{
+            newCell->buddy[i] = nullptr;
+        }
+    }
+    //cout << "new order is " << newCell->order << endl;
     newCell->is_free = true;
     metaData* prev = currentMeta->prev;
     metaData* next = currentMeta->next;
@@ -244,11 +259,11 @@ void splitSingleCell(size_t order, metaData *currentMeta)
     newCell->next = nullptr;
     newCell->prev = nullptr;
     addCellToArr(currentMeta);
-    cout << "addCellToArr(currentMeta);" << endl;
-    printList(10);
+    //cout << "addCellToArr(currentMeta);" << endl;
+    //printList(10);
     addCellToArr(newCell);
-    cout << "addCellToArr(newCell);" << endl;
-    printList(10);
+    //cout << "addCellToArr(newCell);" << endl;
+    //printList(10);
     //cout << "check 123 : Splitting address " << currentMeta << "& order " << currentMeta->order << " to order " << order << endl;
     splitSingleCell(order, currentMeta);
 }
@@ -267,15 +282,42 @@ metaData *findandRemoveFreeBlock(int order)
         {
             metaData *toReturn = arr[i];
             splitSingleCell(order, toReturn);
-            /*arr[i] = toReturn->next;
-            if (arr[i] != nullptr)
-            {
-                arr[i]->prev = nullptr;
-            }*/
             return toReturn;
         }
     }
     return nullptr;
+}
+
+void combine(metaData* first){
+    metaData* prev = first->prev;
+    metaData* next = first->next->next;
+    if (prev != nullptr){
+        prev->next = next;
+    }
+    else{
+        arr[first->order] = next;
+    }
+    if (next != nullptr){
+        next->prev = prev;
+    }
+}
+void freeHelper(metaData* meta){
+    if (meta->order == 10) return;
+    metaData* buddy = meta->buddy[meta->order];
+    if (!buddy->is_free) return;
+    if (meta < buddy){
+        combine(meta);
+    }
+    else{
+        combine(buddy);
+        meta = buddy;
+    }  
+    //cout << "order is " << meta->order << endl;
+    //printList(meta->order);
+    meta->buddy[meta->order] = nullptr;
+    meta->order++;
+    addCellToArr(meta);
+    freeHelper(meta);
 }
 
 /**
@@ -287,14 +329,14 @@ void *smalloc(size_t size)
 {
     if (!created)
         create();
-    printArr();
+    //printArr();
     int order = getOrder(size + sizeof(metaData));
-    cout << "Allocating block with order " << order << " for size " << size << endl;
+    //cout << "Allocating block with order " << order << " for size " << size << endl;
     metaData *newData = findandRemoveFreeBlock(order);
     if (newData == nullptr)
         return nullptr;
     newData->is_free = false;
-    cout << "Allocation successful. Returning pointer to block." << endl;
+    //cout << "Allocation successful. Returning pointer to block." << endl;
     return (void *)((char *)newData + sizeof(metaData));
 }
 
@@ -326,6 +368,8 @@ void sfree(void *p)
     if (ptr->is_free)
         return;
     ptr->is_free = true;
+    addCellToArr(ptr);
+    freeHelper(ptr);
     stats.num_free_blocks++;
     stats.num_free_bytes += pairs[ptr->order][0];
 }

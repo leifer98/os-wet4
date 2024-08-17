@@ -308,10 +308,21 @@ int main()
     test10();
 
     printList();*/
-    std::cout << "check1." << std::endl;
+    //std::cout << "check1." << std::endl;
+    std::cout << "Init" << std::endl;
     void *ptr1 = smalloc(2);
+    std::cout << "ptr1: " << ptr1 << std::endl;
+    std::cout << "After one smalloc:" << std::endl; 
+    printArr();
     void *ptr2 = smalloc(2);
-    // void *ptr2 = smalloc(15);
+    std::cout << "ptr2: " << ptr2 << std::endl;
+    std::cout << "After both smalloc:" << std::endl;
+    printArr();
+    sfree(ptr1);
+    std::cout << "After first sfree" << std::endl;
+    printArr();
+    sfree(ptr2);
+    std::cout << "After second sfree" << std::endl;
     printArr();
 
     std::cout << "All tests completed." << std::endl;
