@@ -3,5 +3,19 @@
 29:malloc_3.Finding buddies test
 30:malloc_3.multiple big allocs test
 31:malloc_3.srealloc test
+32:malloc_3.scalloc test
 33:malloc_3.srealloc merges test
 34:malloc_3.weird values
+35:malloc_3.THANK YOU AVIGAIL YOU ARE AMAZING! size of blocks and meta data
+36:malloc_3.THANK YOU AVIGAIL YOU ARE AMAZING! GEPETA 1
+37:malloc_3.THANK YOU AVIGAIL YOU ARE AMAZING! 1.5
+38:malloc_3.THANK YOU AVIGAIL YOU ARE AMAZING! 2
+39:malloc_3.THANK YOU AVIGAIL YOU ARE AMAZING! 3
+40:malloc_3.THANK YOU AVIGAIL YOU ARE AMAZING! 8
+41:malloc_3.THANK YOU AVIGAIL YOU ARE AMAZING! 9
+42:malloc_3.THANK YOU AVIGAIL YOU ARE AMAZING! 12
+43:malloc_3.THANK YOU AVIGAIL YOU ARE AMAZING! 13
+44:malloc_3.THANK YOU AVIGAIL YOU ARE AMAZING! 14
+45:malloc_3.THANK YOU AVIGAIL YOU ARE AMAZING! 15
+46:malloc_3.really free?
+47:malloc_3.tightest merge

@@ -3,6 +3,7 @@
 #include <string.h>
 #include <cstdio>
 #include <iostream>
+#include <sys/mman.h>
 
 using namespace std;
 
@@ -106,7 +107,7 @@ int getOrder(size_t size)
 {
     for (int i = 0; i < 11; i++)
     {
-        if (size < pairs[i][0])
+        if (size < static_cast<size_t>(pairs[i][0]))
         {
             return i; // Return the order number
         }
@@ -154,7 +155,7 @@ void create()
         curr->prev = temp;
         temp = temp->next;
     }
-    printArr();
+    // printArr();
     created = true;
 }
 
@@ -235,7 +236,7 @@ void splitSingleCell(size_t order, metaData *currentMeta)
     newCell->order = currentMeta->order;
     for (int i = 0; i < 10; i++)
     {
-        if (i == newCell->order)
+        if (static_cast<size_t>(i) == newCell->order)
         {
             newCell->buddy[i] = currentMeta;
             currentMeta->buddy[i] = newCell;
@@ -386,9 +387,6 @@ void freeMap(void *ptr)
     // Adjust the pointer to access the metadata associated with the block
     metaData *block = (metaData *)((char *)ptr - sizeof(metaData));
 
-    // Update global memory tracking (if applicable)
-    mmd_bytes -= block->size;
-
     // Use munmap to free the allocated memory block
     munmap(block, sizeof(metaData) + block->order);
 }
@@ -467,7 +465,7 @@ void *srealloc(void *oldp, size_t size) // TODO : add implementation for challen
     if (oldp == nullptr)
         return smalloc(size);
     metaData *oldData = (metaData *)((char *)oldp - sizeof(metaData));
-    if (oldData->order >= getOrder(size))
+    if (oldData->order >= static_cast<size_t>(getOrder(size)))
         return oldp;
     void *newp = smalloc(size);
     if (newp == nullptr)
