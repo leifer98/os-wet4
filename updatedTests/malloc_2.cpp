@@ -188,7 +188,9 @@ void *srealloc(void *oldp, size_t size)
     }
 
     metaData *oldData = (metaData *)((char *)oldp - sizeof(metaData));
-
+    if(oldData->size + size > MAX_SIZE){
+        return NULL;
+    }
     if (oldData->size >= size)
     {
         return oldp; // If the existing block is big enough, return the old pointer

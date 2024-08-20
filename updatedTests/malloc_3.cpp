@@ -12,11 +12,11 @@ using namespace std;
 // Structure to hold metadata for each allocated block
 typedef struct MallocMetadata
 {
-    size_t order;             // Order of the block size or size itself (used in buddy system)
-    bool is_free;             // Indicates if the block is free or allocated
-    MallocMetadata *next;     // Pointer to the next block in the list
-    MallocMetadata *prev;     // Pointer to the previous block in the list
-    MallocMetadata *buddy[9]; // Array of pointers to buddies in different levels
+    size_t order;          // Order of the block size or size itself
+    bool is_free;          // Indicates if the block is free or allocated
+    MallocMetadata *next;  // Pointer to the next block in the list
+    MallocMetadata *prev;  // Pointer to the previous block in the list
+    MallocMetadata *buddy; // Array of pointers to buddies in different levels
 } metaData;
 
 // Structure to hold statistics about the memory allocation
@@ -30,7 +30,8 @@ typedef struct stats
     size_t size_meta_data;       // Size of a single metadata structure
 } metaStats;
 
-metaData *arr[11] = {nullptr};                       // Array of lists for different block sizes
+metaData *arr[11] = {nullptr}; // Array of lists for different block sizes
+metaData *start_of_data = nullptr;
 metaStats stats = {0, 0, 0, 0, 0, sizeof(metaData)}; // Initialize stats
 int pairs[][2] = {
     {128, 0},
@@ -68,14 +69,15 @@ void printArr()
  */
 void printList(int i)
 {
-    std::cout << "Order " << i << " (" << pairs[i][0] << " bytes):" << std::endl;
+    // std::cout << "Order " << i << " (" << pairs[i][0] << " bytes):" << std::endl;
 
     metaData *current = arr[i];
-
+    int block_count = 0;
     // If there are no blocks in the current order
     if (current == nullptr)
     {
-        std::cout << "  No blocks in this order." << std::endl;
+        std::cout << "Order " << i << " (" << pairs[i][0] << " bytes):" << "  No blocks in this order." << std::endl;
+        // std::cout << "  No blocks in this order." << std::endl;
         return;
     }
 
@@ -84,18 +86,20 @@ void printList(int i)
     // Iterate through the linked list of blocks for the current order
     while (current != nullptr)
     {
-        std::cout << "  Block " << block_num << ":" << std::endl;
-        std::cout << "    Address: " << current << std::endl;
+        block_count++;
+        // std::cout << "  Block " << block_num << ":" << std::endl;
+        // std::cout << "    Address: " << current << std::endl;
         // std::cout << "    Is Free: " << (current->is_free ? "Yes" : "No") << std::endl;
         // std::cout << "    Order: " << current->order << std::endl;
         // std::cout << "    Next: " << current->next << std::endl;
         // std::cout << "    Prev: " << current->prev << std::endl;
-        // std::cout << "    Buddy: " << current->buddy << std::endl;
 
         // Move to the next block in the list
         current = current->next;
         block_num++;
     }
+
+    std::cout << "Order " << i << " (" << pairs[i][0] << " bytes):" << block_count << " block(s)" << std::endl;
 }
 
 /**
@@ -125,6 +129,8 @@ void markAllBlocksNotFree()
     // TODO: Implement if needed
 }
 
+// FIRST CHANGES AND USAGE OF BUDDY
+
 /**
  * create - Initializes the memory pool by allocating a large block of memory.
  * The block is split into smaller blocks, and the largest block is added to the array.
@@ -147,7 +153,7 @@ void create()
         metaData *curr = (metaData *)((char *)temp + 131072);
         for (int i = 0; i < 10; i++)
         {
-            curr->buddy[i] = nullptr;
+            curr->buddy = nullptr;
         }
         curr->is_free = true;
         curr->order = 10;
@@ -155,7 +161,16 @@ void create()
         curr->prev = temp;
         temp = temp->next;
     }
+    start_of_data = arr[10];
     // printArr();
+
+    // Update stats
+    stats.num_free_blocks = 32;
+    stats.num_allocated_blocks = 32;
+    stats.num_free_bytes = 131072 * 32;
+    stats.num_allocated_bytes = 131072 * 32;
+    stats.num_meta_data_bytes = sizeof(metaData) * 32;
+
     created = true;
 }
 
@@ -229,27 +244,25 @@ void splitSingleCell(size_t order, metaData *currentMeta)
         // printArr();
         currentMeta->prev = nullptr;
         currentMeta->next = nullptr;
+
+        // one less fr
+        stats.num_free_blocks--;
+
         return;
     }
     currentMeta->order--;
-    metaData *newCell = (metaData *)((char *)currentMeta + pairs[currentMeta->order][0]);
-    newCell->order = currentMeta->order;
-    for (int i = 0; i < 10; i++)
-    {
-        if (static_cast<size_t>(i) == newCell->order)
-        {
-            newCell->buddy[i] = currentMeta;
-            currentMeta->buddy[i] = newCell;
-        }
-        else
-        {
-            newCell->buddy[i] = nullptr;
-        }
-    }
+    metaData *newCell = (metaData *)((char *)currentMeta + pairs[currentMeta->order][0]); // this is the second half
+
+    newCell->buddy = currentMeta;
+    currentMeta->buddy = newCell;
+
     // cout << "new order is " << newCell->order << endl;
+    newCell->order = currentMeta->order;
     newCell->is_free = true;
+
     metaData *prev = currentMeta->prev;
     metaData *next = currentMeta->next;
+
     if (prev == nullptr)
     {
         arr[currentMeta->order + 1] = next;
@@ -262,20 +275,21 @@ void splitSingleCell(size_t order, metaData *currentMeta)
     {
         next->prev = prev;
     }
-    // cout << "\n print list 10" << endl;
-    // printList(10);
-    // cout << endl;
+
     currentMeta->next = nullptr;
     currentMeta->prev = nullptr;
     newCell->next = nullptr;
     newCell->prev = nullptr;
+
     addCellToArr(currentMeta);
-    // cout << "addCellToArr(currentMeta);" << endl;
-    // printList(10);
     addCellToArr(newCell);
-    // cout << "addCellToArr(newCell);" << endl;
-    // printList(10);
-    // cout << "check 123 : Splitting address " << currentMeta << "& order " << currentMeta->order << " to order " << order << endl;
+
+    stats.num_free_blocks++; // Splitting adds an additional free block
+
+    stats.num_allocated_blocks++;
+    stats.num_allocated_bytes += pairs[currentMeta->order][0];
+    stats.num_meta_data_bytes += sizeof(metaData);
+
     splitSingleCell(order, currentMeta);
 }
 
@@ -286,7 +300,7 @@ void splitSingleCell(size_t order, metaData *currentMeta)
  */
 metaData *findandRemoveFreeBlock(int order)
 {
-    cout << "Looking for a free block with order " << order << endl;
+    // cout << "Looking for a free block with order " << order << endl;
     for (int i = order; i < 11; i++)
     {
         if (arr[i] != nullptr)
@@ -322,9 +336,9 @@ void combine(metaData *first)
         next->prev = prev; // Update the previous pointer of the next block
     }
 
-    first->buddy[first->order] = nullptr; // Clear the buddy pointer for the current order
-    first->order++;                       // Increase the order of the merged block
-    addCellToArr(first);                  // Reinsert the combined block into the appropriate order in `arr`
+    first->buddy = nullptr; // Clear the pointer for the current order
+    first->order++;         // Increase the order of the merged block
+    addCellToArr(first);    // Reinsert the combined block into the appropriate order in `arr`
 }
 
 /**
@@ -335,11 +349,33 @@ void freeHelper(metaData *meta)
 {
     if (meta->order == 10)
         return; // Stop if the block is at the maximum order
+    if (meta->buddy == nullptr)
+    {
+        size_t block_size = pairs[meta->order][0]; // Size of the block based on the order
+        size_t count = 0;                          // To count the number of blocks between start_of_data and meta
 
-    metaData *buddy = meta->buddy[meta->order]; // Get the buddy block for the current order
+        // Calculate the number of blocks between start_of_data and meta
+        for (char *ptr = (char *)start_of_data; ptr < (char *)meta; ptr += block_size)
+        {
+            count++;
+        }
+
+        // Determine whether the count is even or odd and set the buddy accordingly
+        if (count % 2 == 0) // Even count
+        {
+            meta->buddy = (metaData *)((char *)meta + block_size);
+        }
+        else // Odd count
+        {
+            meta->buddy = (metaData *)((char *)meta - block_size);
+        }
+    }
+    metaData *buddy = meta->buddy; // Get the buddy block for the current order
 
     if (!buddy->is_free)
+    {
         return; // Exit if the buddy block is not free
+    }
 
     // Determine which block is earlier in memory and combine them
     if (meta < buddy)
@@ -354,6 +390,8 @@ void freeHelper(metaData *meta)
 
     freeHelper(meta); // Recursively attempt to merge at the next higher order
 }
+
+// LAST CHANGES AND USAGE OF BUDDY
 
 /**
  * @brief Allocates a new memory block using mmap.
@@ -402,6 +440,7 @@ void *smalloc(size_t size)
         create();
     if (size > (128 * 1024))
     {
+        
         return (void *)((char *)getMap(size) + sizeof(metaData));
     }
     // printArr();
@@ -411,7 +450,14 @@ void *smalloc(size_t size)
     if (newData == nullptr)
         return nullptr;
     newData->is_free = false;
-    // cout << "Allocation successful. Returning pointer to block." << endl;
+
+    // Use the pairs array to find the block size based on the order
+    size_t block_size = pairs[newData->order][0];
+
+    stats.num_free_blocks--;
+    stats.num_allocated_bytes += block_size;
+    stats.num_free_bytes -= block_size;
+
     return (void *)((char *)newData + sizeof(metaData));
 }
 
@@ -448,6 +494,14 @@ void sfree(void *p)
         return;
     }
     ptr->is_free = true;
+
+    // Use the pairs array to find the block size based on the order
+    size_t block_size = pairs[ptr->order][0];
+
+    stats.num_free_blocks++;
+    stats.num_allocated_bytes -= block_size;
+    stats.num_free_bytes += block_size;
+
     addCellToArr(ptr);
     freeHelper(ptr);
 }
@@ -460,18 +514,21 @@ void sfree(void *p)
  */
 void *srealloc(void *oldp, size_t size) // TODO : add implementation for challenge 3
 {
-    if (size == 0 || size > MAX_SIZE)
+    if (size == 0)
         return NULL;
+
     if (oldp == nullptr)
         return smalloc(size);
     metaData *oldData = (metaData *)((char *)oldp - sizeof(metaData));
-    if (oldData->order >= static_cast<size_t>(getOrder(size)))
+    if (oldData->order >= static_cast<size_t>(getOrder(size + sizeof(metaData))))
         return oldp;
     void *newp = smalloc(size);
     if (newp == nullptr)
         return NULL;
     memcpy(newp, oldp, pairs[oldData->order][0] - sizeof(metaData));
+
     sfree(oldp);
+
     return newp;
 }
 
