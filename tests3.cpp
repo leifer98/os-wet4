@@ -25,9 +25,9 @@ void sfree(void *p);
 
 // Stats functions
 size_t _num_free_blocks();
-size_t _num_free_bytes();
-size_t _num_allocated_blocks();
-size_t _num_allocated_bytes();
+size_t _num_free_blocks();
+size_t _num_free_blocks();
+size_t _num_free_blocks();
 size_t _num_meta_data_bytes();
 size_t _size_meta_data();
 
@@ -41,54 +41,56 @@ int main()
 {
 
     std::cout << "Init" << std::endl;
-    std::cout << "starting, _size_meta_data():" << _size_meta_data() << std::endl;
-    std::cout << "starting, _num_allocated_bytes():" << _num_allocated_bytes() << std::endl;
-    //  4325376 (0x420000) == 4192624 (0x3ff970)
-    void *ptr1 = smalloc(40);
-    // REQUIRE(ptr1 != nullptr);
-    //    verify_size(base);
-    std::cout << "After one smalloc, _num_allocated_bytes():" << _num_allocated_bytes() << std::endl;
+    
+    std::vector<void *> allocations;
 
-    // Allocate large block (order 10)
-    printArr();
-    void *ptr2 = smalloc((128 * 1024) + 100);
-    // REQUIRE(ptr2 != nullptr);
-    //    verify_size_with_large_blocks(base, (128 * 1024+100 +_size_meta_data()));
-    // verify_block_by_order(1, 1, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 31, 0, 1, MAX_ELEMENT_SIZE + 100);
-    std::cout << "ptr2: " << ptr2 << std::endl;
-    std::cout << "After both smalloc, _num_allocated_bytes():" << _num_allocated_bytes() << std::endl;
-    printArr();
-    // Allocate another small block
-    void *ptr3 = smalloc(50);
-    // REQUIRE(ptr3 != nullptr);
-    // verify_block_by_order(0, 2, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 31, 0, 1, MAX_ELEMENT_SIZE + 100);
-    std::cout << "ptr3: " << ptr3 << std::endl;
-    std::cout << "After third smalloc, _num_allocated_bytes():" << _num_allocated_bytes() << std::endl;
-    printArr();
-    // Free the first small block
-    sfree(ptr1);
-    // verify_block_by_order(1, 1, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 31, 0, 1, MAX_ELEMENT_SIZE + 100);
-    std::cout << "ptr1: " << ptr1 << std::endl;
-    std::cout << "After one free, _num_allocated_bytes():" << _num_allocated_bytes() << std::endl;
-    printArr();
-    // Allocate another small block
-    void *ptr4 = smalloc(40);
-    // REQUIRE(ptr4 != nullptr);
-    // verify_block_by_order(0, 2, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 31, 0, 1, MAX_ELEMENT_SIZE + 100);
-    std::cout << "ptr4: " << ptr4 << std::endl;
-    std::cout << "After forth malloc, _num_allocated_bytes():" << _num_allocated_bytes() << std::endl;
-    printArr();
-    // Free all blocks
-    sfree(ptr3);
-    sfree(ptr4);
-    // verify_block_by_order(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 32, 0, 1, MAX_ELEMENT_SIZE + 100);
-    sfree(ptr1); // free again
-    sfree(ptr2);
-    // verify_block_by_order(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 32, 0, 0, 0);
+    // Allocate 64 blocks of size 128 * 2^9 - 64
+    for (int i = 0; i < 64; i++)
+    {
+        // printf("%d\n", i);
+        fflush(stdout);
+        void *ptr = smalloc(128 * std::pow(2, 9) - 64);
+        REQUIRE(ptr != nullptr);
+        allocations.push_back(ptr);
+        verify_block_by_order(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, allocations.size() % 2, allocations.size(), 32 - (int)(i / 2) - 1, 0, 0, 0);
+        // printf("OK\n");
+        fflush(stdout);
+    }
+
+    REQUIRE(smalloc(40) == NULL);
+    // Free the allocated blocks
+    while (!allocations.empty())
+    {
+        void *ptr = allocations.back();
+        allocations.pop_back();
+        sfree(ptr);
+        verify_block_by_order(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, allocations.size() % 2, allocations.size(), 32 - (int)(allocations.size() / 2) - (allocations.size() % 2), 0, 0, 0);
+    }
+
+    // Verify that all blocks are merged into a single large block
+    verify_block_by_order(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 32, 0, 0, 0);
+
+    for (int i = 0; i < 64; i++)
+    {
+        void *ptr = smalloc(128 * std::pow(2, 9) - 64);
+        REQUIRE(ptr != nullptr);
+        allocations.push_back(ptr);
+        verify_block_by_order(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, allocations.size() % 2, allocations.size(), 32 - (int)(i / 2) - 1, 0, 0, 0);
+    }
+    REQUIRE(smalloc(40) == NULL);
+    // Free the allocated blocks
+    while (!allocations.empty())
+    {
+        void *ptr = allocations.front();
+        allocations.erase(allocations.begin());
+        sfree(ptr);
+        verify_block_by_order(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, allocations.size() % 2, allocations.size(), 32 - (int)(allocations.size() / 2) - (allocations.size() % 2), 0, 0, 0);
+    }
+    verify_block_by_order(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 32, 0, 0, 0);
 
     // void *ptr1 = smalloc(2);
     // std::cout << "ptr1: " << ptr1 << std::endl;
-    // std::cout << "After one smalloc, _num_allocated_blocks():" << _num_allocated_blocks() << std::endl;
+    // std::cout << "After one smalloc, _num_free_blocks():" << _num_free_blocks() << std::endl;
     // printArr();
     // void *ptr2 = smalloc(2);
     // std::cout << "ptr2: " << ptr2 << std::endl;

@@ -1,22 +1,22 @@
-Start testing: Aug 20 14:22 IDT
+Start testing: Aug 21 14:21 IDT
 ----------------------------------------------------------
 1/47 Testing: malloc_1.Sanity
 1/47 Test: malloc_1.Sanity
 Command: "/mnt/c/Users/user/Documents/os/wet4/updatedTests/build/tests/malloc_1_test" "Sanity"
 Directory: /mnt/c/Users/user/Documents/os/wet4/updatedTests/build/tests
-"malloc_1.Sanity" start time: Aug 20 14:22 IDT
+"malloc_1.Sanity" start time: Aug 21 14:21 IDT
 Output:
 ----------------------------------------------------------
 Filters: Sanity
-Randomness seeded to: 3089321591
+Randomness seeded to: 2224398765
 ===============================================================================
 All tests passed (2 assertions in 1 test case)
 
 <end of output>
-Test time =   0.12 sec
+Test time =   0.05 sec
 ----------------------------------------------------------
 Test Passed.
-"malloc_1.Sanity" end time: Aug 20 14:22 IDT
+"malloc_1.Sanity" end time: Aug 21 14:21 IDT
 "malloc_1.Sanity" time elapsed: 00:00:00
 ----------------------------------------------------------
 
@@ -24,11 +24,11 @@ Test Passed.
 2/47 Test: malloc_1.Check size
 Command: "/mnt/c/Users/user/Documents/os/wet4/updatedTests/build/tests/malloc_1_test" "Check size"
 Directory: /mnt/c/Users/user/Documents/os/wet4/updatedTests/build/tests
-"malloc_1.Check size" start time: Aug 20 14:22 IDT
+"malloc_1.Check size" start time: Aug 21 14:21 IDT
 Output:
 ----------------------------------------------------------
 Filters: Check size
-Randomness seeded to: 155961821
+Randomness seeded to: 346632509
 ===============================================================================
 All tests passed (6 assertions in 1 test case)
 
@@ -36,7 +36,7 @@ All tests passed (6 assertions in 1 test case)
 Test time =   0.04 sec
 ----------------------------------------------------------
 Test Passed.
-"malloc_1.Check size" end time: Aug 20 14:22 IDT
+"malloc_1.Check size" end time: Aug 21 14:21 IDT
 "malloc_1.Check size" time elapsed: 00:00:00
 ----------------------------------------------------------
 
@@ -44,19 +44,19 @@ Test Passed.
 3/47 Test: malloc_1.0 size
 Command: "/mnt/c/Users/user/Documents/os/wet4/updatedTests/build/tests/malloc_1_test" "0 size"
 Directory: /mnt/c/Users/user/Documents/os/wet4/updatedTests/build/tests
-"malloc_1.0 size" start time: Aug 20 14:22 IDT
+"malloc_1.0 size" start time: Aug 21 14:21 IDT
 Output:
 ----------------------------------------------------------
 Filters: 0 size
-Randomness seeded to: 3279356215
+Randomness seeded to: 868806573
 ===============================================================================
 All tests passed (2 assertions in 1 test case)
 
 <end of output>
-Test time =   0.08 sec
+Test time =   0.04 sec
 ----------------------------------------------------------
 Test Passed.
-"malloc_1.0 size" end time: Aug 20 14:22 IDT
+"malloc_1.0 size" end time: Aug 21 14:21 IDT
 "malloc_1.0 size" time elapsed: 00:00:00
 ----------------------------------------------------------
 
@@ -64,19 +64,19 @@ Test Passed.
 4/47 Test: malloc_1.Max size
 Command: "/mnt/c/Users/user/Documents/os/wet4/updatedTests/build/tests/malloc_1_test" "Max size"
 Directory: /mnt/c/Users/user/Documents/os/wet4/updatedTests/build/tests
-"malloc_1.Max size" start time: Aug 20 14:22 IDT
+"malloc_1.Max size" start time: Aug 21 14:21 IDT
 Output:
 ----------------------------------------------------------
 Filters: Max size
-Randomness seeded to: 3714855246
+Randomness seeded to: 606824467
 ===============================================================================
 All tests passed (4 assertions in 1 test case)
 
 <end of output>
-Test time =   0.06 sec
+Test time =   0.05 sec
 ----------------------------------------------------------
 Test Passed.
-"malloc_1.Max size" end time: Aug 20 14:22 IDT
+"malloc_1.Max size" end time: Aug 21 14:21 IDT
 "malloc_1.Max size" time elapsed: 00:00:00
 ----------------------------------------------------------
 
@@ -84,19 +84,19 @@ Test Passed.
 5/47 Test: malloc_2.Sanity
 Command: "/mnt/c/Users/user/Documents/os/wet4/updatedTests/build/tests/malloc_2_test" "Sanity"
 Directory: /mnt/c/Users/user/Documents/os/wet4/updatedTests/build/tests
-"malloc_2.Sanity" start time: Aug 20 14:22 IDT
+"malloc_2.Sanity" start time: Aug 21 14:21 IDT
 Output:
 ----------------------------------------------------------
 Filters: Sanity
-Randomness seeded to: 3910382699
+Randomness seeded to: 1543963553
 ===============================================================================
 All tests passed (19 assertions in 1 test case)
 
 <end of output>
-Test time =   0.06 sec
+Test time =   0.05 sec
 ----------------------------------------------------------
 Test Passed.
-"malloc_2.Sanity" end time: Aug 20 14:22 IDT
+"malloc_2.Sanity" end time: Aug 21 14:21 IDT
 "malloc_2.Sanity" time elapsed: 00:00:00
 ----------------------------------------------------------
 
@@ -104,11 +104,11 @@ Test Passed.
 6/47 Test: malloc_2.Check size
 Command: "/mnt/c/Users/user/Documents/os/wet4/updatedTests/build/tests/malloc_2_test" "Check size"
 Directory: /mnt/c/Users/user/Documents/os/wet4/updatedTests/build/tests
-"malloc_2.Check size" start time: Aug 20 14:22 IDT
+"malloc_2.Check size" start time: Aug 21 14:21 IDT
 Output:
 ----------------------------------------------------------
 Filters: Check size
-Randomness seeded to: 2440248311
+Randomness seeded to: 2937584282
 ===============================================================================
 All tests passed (33 assertions in 1 test case)
 
@@ -116,7 +116,7 @@ All tests passed (33 assertions in 1 test case)
 Test time =   0.05 sec
 ----------------------------------------------------------
 Test Passed.
-"malloc_2.Check size" end time: Aug 20 14:22 IDT
+"malloc_2.Check size" end time: Aug 21 14:21 IDT
 "malloc_2.Check size" time elapsed: 00:00:00
 ----------------------------------------------------------
 
@@ -124,19 +124,19 @@ Test Passed.
 7/47 Test: malloc_2.0 size
 Command: "/mnt/c/Users/user/Documents/os/wet4/updatedTests/build/tests/malloc_2_test" "0 size"
 Directory: /mnt/c/Users/user/Documents/os/wet4/updatedTests/build/tests
-"malloc_2.0 size" start time: Aug 20 14:22 IDT
+"malloc_2.0 size" start time: Aug 21 14:21 IDT
 Output:
 ----------------------------------------------------------
 Filters: 0 size
-Randomness seeded to: 2865436122
+Randomness seeded to: 2453577638
 ===============================================================================
 All tests passed (13 assertions in 1 test case)
 
 <end of output>
-Test time =   0.05 sec
+Test time =   0.04 sec
 ----------------------------------------------------------
 Test Passed.
-"malloc_2.0 size" end time: Aug 20 14:22 IDT
+"malloc_2.0 size" end time: Aug 21 14:21 IDT
 "malloc_2.0 size" time elapsed: 00:00:00
 ----------------------------------------------------------
 
@@ -144,11 +144,11 @@ Test Passed.
 8/47 Test: malloc_2.Max size
 Command: "/mnt/c/Users/user/Documents/os/wet4/updatedTests/build/tests/malloc_2_test" "Max size"
 Directory: /mnt/c/Users/user/Documents/os/wet4/updatedTests/build/tests
-"malloc_2.Max size" start time: Aug 20 14:22 IDT
+"malloc_2.Max size" start time: Aug 21 14:21 IDT
 Output:
 ----------------------------------------------------------
 Filters: Max size
-Randomness seeded to: 560900117
+Randomness seeded to: 4042203570
 ===============================================================================
 All tests passed (27 assertions in 1 test case)
 
@@ -156,7 +156,7 @@ All tests passed (27 assertions in 1 test case)
 Test time =   0.05 sec
 ----------------------------------------------------------
 Test Passed.
-"malloc_2.Max size" end time: Aug 20 14:22 IDT
+"malloc_2.Max size" end time: Aug 21 14:21 IDT
 "malloc_2.Max size" time elapsed: 00:00:00
 ----------------------------------------------------------
 
@@ -164,11 +164,11 @@ Test Passed.
 9/47 Test: malloc_2.free
 Command: "/mnt/c/Users/user/Documents/os/wet4/updatedTests/build/tests/malloc_2_test" "free"
 Directory: /mnt/c/Users/user/Documents/os/wet4/updatedTests/build/tests
-"malloc_2.free" start time: Aug 20 14:22 IDT
+"malloc_2.free" start time: Aug 21 14:21 IDT
 Output:
 ----------------------------------------------------------
 Filters: free
-Randomness seeded to: 3823931278
+Randomness seeded to: 995493494
 ===============================================================================
 All tests passed (59 assertions in 1 test case)
 
@@ -176,7 +176,7 @@ All tests passed (59 assertions in 1 test case)
 Test time =   0.05 sec
 ----------------------------------------------------------
 Test Passed.
-"malloc_2.free" end time: Aug 20 14:22 IDT
+"malloc_2.free" end time: Aug 21 14:21 IDT
 "malloc_2.free" time elapsed: 00:00:00
 ----------------------------------------------------------
 
@@ -184,19 +184,19 @@ Test Passed.
 10/47 Test: malloc_2.free 2
 Command: "/mnt/c/Users/user/Documents/os/wet4/updatedTests/build/tests/malloc_2_test" "free 2"
 Directory: /mnt/c/Users/user/Documents/os/wet4/updatedTests/build/tests
-"malloc_2.free 2" start time: Aug 20 14:22 IDT
+"malloc_2.free 2" start time: Aug 21 14:21 IDT
 Output:
 ----------------------------------------------------------
 Filters: free 2
-Randomness seeded to: 968001652
+Randomness seeded to: 750447866
 ===============================================================================
 All tests passed (59 assertions in 1 test case)
 
 <end of output>
-Test time =   0.06 sec
+Test time =   0.05 sec
 ----------------------------------------------------------
 Test Passed.
-"malloc_2.free 2" end time: Aug 20 14:22 IDT
+"malloc_2.free 2" end time: Aug 21 14:21 IDT
 "malloc_2.free 2" time elapsed: 00:00:00
 ----------------------------------------------------------
 
@@ -204,11 +204,11 @@ Test Passed.
 11/47 Test: malloc_2.free 3
 Command: "/mnt/c/Users/user/Documents/os/wet4/updatedTests/build/tests/malloc_2_test" "free 3"
 Directory: /mnt/c/Users/user/Documents/os/wet4/updatedTests/build/tests
-"malloc_2.free 3" start time: Aug 20 14:22 IDT
+"malloc_2.free 3" start time: Aug 21 14:21 IDT
 Output:
 ----------------------------------------------------------
 Filters: free 3
-Randomness seeded to: 1022811177
+Randomness seeded to: 3923570628
 ===============================================================================
 All tests passed (59 assertions in 1 test case)
 
@@ -216,7 +216,7 @@ All tests passed (59 assertions in 1 test case)
 Test time =   0.05 sec
 ----------------------------------------------------------
 Test Passed.
-"malloc_2.free 3" end time: Aug 20 14:22 IDT
+"malloc_2.free 3" end time: Aug 21 14:21 IDT
 "malloc_2.free 3" time elapsed: 00:00:00
 ----------------------------------------------------------
 
@@ -224,19 +224,19 @@ Test Passed.
 12/47 Test: malloc_2.Reuse
 Command: "/mnt/c/Users/user/Documents/os/wet4/updatedTests/build/tests/malloc_2_test" "Reuse"
 Directory: /mnt/c/Users/user/Documents/os/wet4/updatedTests/build/tests
-"malloc_2.Reuse" start time: Aug 20 14:22 IDT
+"malloc_2.Reuse" start time: Aug 21 14:21 IDT
 Output:
 ----------------------------------------------------------
 Filters: Reuse
-Randomness seeded to: 194022069
+Randomness seeded to: 717702871
 ===============================================================================
 All tests passed (32 assertions in 1 test case)
 
 <end of output>
-Test time =   0.06 sec
+Test time =   0.05 sec
 ----------------------------------------------------------
 Test Passed.
-"malloc_2.Reuse" end time: Aug 20 14:22 IDT
+"malloc_2.Reuse" end time: Aug 21 14:21 IDT
 "malloc_2.Reuse" time elapsed: 00:00:00
 ----------------------------------------------------------
 
@@ -244,19 +244,19 @@ Test Passed.
 13/47 Test: malloc_2.Reuse two blocks
 Command: "/mnt/c/Users/user/Documents/os/wet4/updatedTests/build/tests/malloc_2_test" "Reuse two blocks"
 Directory: /mnt/c/Users/user/Documents/os/wet4/updatedTests/build/tests
-"malloc_2.Reuse two blocks" start time: Aug 20 14:22 IDT
+"malloc_2.Reuse two blocks" start time: Aug 21 14:21 IDT
 Output:
 ----------------------------------------------------------
 Filters: Reuse two blocks
-Randomness seeded to: 3223901764
+Randomness seeded to: 1563292895
 ===============================================================================
 All tests passed (46 assertions in 1 test case)
 
 <end of output>
-Test time =   0.06 sec
+Test time =   0.05 sec
 ----------------------------------------------------------
 Test Passed.
-"malloc_2.Reuse two blocks" end time: Aug 20 14:22 IDT
+"malloc_2.Reuse two blocks" end time: Aug 21 14:21 IDT
 "malloc_2.Reuse two blocks" time elapsed: 00:00:00
 ----------------------------------------------------------
 
@@ -264,19 +264,19 @@ Test Passed.
 14/47 Test: malloc_2.Reuse two blocks reverse
 Command: "/mnt/c/Users/user/Documents/os/wet4/updatedTests/build/tests/malloc_2_test" "Reuse two blocks reverse"
 Directory: /mnt/c/Users/user/Documents/os/wet4/updatedTests/build/tests
-"malloc_2.Reuse two blocks reverse" start time: Aug 20 14:22 IDT
+"malloc_2.Reuse two blocks reverse" start time: Aug 21 14:21 IDT
 Output:
 ----------------------------------------------------------
 Filters: Reuse two blocks reverse
-Randomness seeded to: 2980479016
+Randomness seeded to: 4075182310
 ===============================================================================
 All tests passed (46 assertions in 1 test case)
 
 <end of output>
-Test time =   0.07 sec
+Test time =   0.05 sec
 ----------------------------------------------------------
 Test Passed.
-"malloc_2.Reuse two blocks reverse" end time: Aug 20 14:22 IDT
+"malloc_2.Reuse two blocks reverse" end time: Aug 21 14:21 IDT
 "malloc_2.Reuse two blocks reverse" time elapsed: 00:00:00
 ----------------------------------------------------------
 
@@ -284,19 +284,19 @@ Test Passed.
 15/47 Test: malloc_2.Reuse two blocks both
 Command: "/mnt/c/Users/user/Documents/os/wet4/updatedTests/build/tests/malloc_2_test" "Reuse two blocks both"
 Directory: /mnt/c/Users/user/Documents/os/wet4/updatedTests/build/tests
-"malloc_2.Reuse two blocks both" start time: Aug 20 14:22 IDT
+"malloc_2.Reuse two blocks both" start time: Aug 21 14:21 IDT
 Output:
 ----------------------------------------------------------
 Filters: Reuse two blocks both
-Randomness seeded to: 3582364345
+Randomness seeded to: 3505446766
 ===============================================================================
 All tests passed (46 assertions in 1 test case)
 
 <end of output>
-Test time =   0.04 sec
+Test time =   0.05 sec
 ----------------------------------------------------------
 Test Passed.
-"malloc_2.Reuse two blocks both" end time: Aug 20 14:22 IDT
+"malloc_2.Reuse two blocks both" end time: Aug 21 14:21 IDT
 "malloc_2.Reuse two blocks both" time elapsed: 00:00:00
 ----------------------------------------------------------
 
@@ -304,19 +304,19 @@ Test Passed.
 16/47 Test: malloc_2.Reuse two blocks sizes small
 Command: "/mnt/c/Users/user/Documents/os/wet4/updatedTests/build/tests/malloc_2_test" "Reuse two blocks sizes small"
 Directory: /mnt/c/Users/user/Documents/os/wet4/updatedTests/build/tests
-"malloc_2.Reuse two blocks sizes small" start time: Aug 20 14:22 IDT
+"malloc_2.Reuse two blocks sizes small" start time: Aug 21 14:21 IDT
 Output:
 ----------------------------------------------------------
 Filters: Reuse two blocks sizes small
-Randomness seeded to: 2524653394
+Randomness seeded to: 2604224768
 ===============================================================================
 All tests passed (46 assertions in 1 test case)
 
 <end of output>
-Test time =   0.04 sec
+Test time =   0.05 sec
 ----------------------------------------------------------
 Test Passed.
-"malloc_2.Reuse two blocks sizes small" end time: Aug 20 14:22 IDT
+"malloc_2.Reuse two blocks sizes small" end time: Aug 21 14:21 IDT
 "malloc_2.Reuse two blocks sizes small" time elapsed: 00:00:00
 ----------------------------------------------------------
 
@@ -324,19 +324,19 @@ Test Passed.
 17/47 Test: malloc_2.Reuse two blocks sizes large
 Command: "/mnt/c/Users/user/Documents/os/wet4/updatedTests/build/tests/malloc_2_test" "Reuse two blocks sizes large"
 Directory: /mnt/c/Users/user/Documents/os/wet4/updatedTests/build/tests
-"malloc_2.Reuse two blocks sizes large" start time: Aug 20 14:22 IDT
+"malloc_2.Reuse two blocks sizes large" start time: Aug 21 14:21 IDT
 Output:
 ----------------------------------------------------------
 Filters: Reuse two blocks sizes large
-Randomness seeded to: 2204111640
+Randomness seeded to: 615273399
 ===============================================================================
 All tests passed (46 assertions in 1 test case)
 
 <end of output>
-Test time =   0.04 sec
+Test time =   0.05 sec
 ----------------------------------------------------------
 Test Passed.
-"malloc_2.Reuse two blocks sizes large" end time: Aug 20 14:22 IDT
+"malloc_2.Reuse two blocks sizes large" end time: Aug 21 14:21 IDT
 "malloc_2.Reuse two blocks sizes large" time elapsed: 00:00:00
 ----------------------------------------------------------
 
@@ -344,19 +344,19 @@ Test Passed.
 18/47 Test: malloc_2.scalloc
 Command: "/mnt/c/Users/user/Documents/os/wet4/updatedTests/build/tests/malloc_2_test" "scalloc"
 Directory: /mnt/c/Users/user/Documents/os/wet4/updatedTests/build/tests
-"malloc_2.scalloc" start time: Aug 20 14:22 IDT
+"malloc_2.scalloc" start time: Aug 21 14:21 IDT
 Output:
 ----------------------------------------------------------
 Filters: scalloc
-Randomness seeded to: 1901593107
+Randomness seeded to: 1955098192
 ===============================================================================
 All tests passed (51 assertions in 1 test case)
 
 <end of output>
-Test time =   0.04 sec
+Test time =   0.05 sec
 ----------------------------------------------------------
 Test Passed.
-"malloc_2.scalloc" end time: Aug 20 14:22 IDT
+"malloc_2.scalloc" end time: Aug 21 14:21 IDT
 "malloc_2.scalloc" time elapsed: 00:00:00
 ----------------------------------------------------------
 
@@ -364,19 +364,19 @@ Test Passed.
 19/47 Test: malloc_2.scalloc taint
 Command: "/mnt/c/Users/user/Documents/os/wet4/updatedTests/build/tests/malloc_2_test" "scalloc taint"
 Directory: /mnt/c/Users/user/Documents/os/wet4/updatedTests/build/tests
-"malloc_2.scalloc taint" start time: Aug 20 14:22 IDT
+"malloc_2.scalloc taint" start time: Aug 21 14:21 IDT
 Output:
 ----------------------------------------------------------
 Filters: scalloc taint
-Randomness seeded to: 2678908975
+Randomness seeded to: 797179406
 ===============================================================================
 All tests passed (232 assertions in 1 test case)
 
 <end of output>
-Test time =   0.04 sec
+Test time =   0.09 sec
 ----------------------------------------------------------
 Test Passed.
-"malloc_2.scalloc taint" end time: Aug 20 14:22 IDT
+"malloc_2.scalloc taint" end time: Aug 21 14:21 IDT
 "malloc_2.scalloc taint" time elapsed: 00:00:00
 ----------------------------------------------------------
 
@@ -384,19 +384,19 @@ Test Passed.
 20/47 Test: malloc_2.scalloc 0 size
 Command: "/mnt/c/Users/user/Documents/os/wet4/updatedTests/build/tests/malloc_2_test" "scalloc 0 size"
 Directory: /mnt/c/Users/user/Documents/os/wet4/updatedTests/build/tests
-"malloc_2.scalloc 0 size" start time: Aug 20 14:22 IDT
+"malloc_2.scalloc 0 size" start time: Aug 21 14:21 IDT
 Output:
 ----------------------------------------------------------
 Filters: scalloc 0 size
-Randomness seeded to: 1497400851
+Randomness seeded to: 1707702980
 ===============================================================================
 All tests passed (21 assertions in 1 test case)
 
 <end of output>
-Test time =   0.04 sec
+Test time =   0.05 sec
 ----------------------------------------------------------
 Test Passed.
-"malloc_2.scalloc 0 size" end time: Aug 20 14:22 IDT
+"malloc_2.scalloc 0 size" end time: Aug 21 14:21 IDT
 "malloc_2.scalloc 0 size" time elapsed: 00:00:00
 ----------------------------------------------------------
 
@@ -404,19 +404,19 @@ Test Passed.
 21/47 Test: malloc_2.scalloc Max size num
 Command: "/mnt/c/Users/user/Documents/os/wet4/updatedTests/build/tests/malloc_2_test" "scalloc Max size num"
 Directory: /mnt/c/Users/user/Documents/os/wet4/updatedTests/build/tests
-"malloc_2.scalloc Max size num" start time: Aug 20 14:22 IDT
+"malloc_2.scalloc Max size num" start time: Aug 21 14:21 IDT
 Output:
 ----------------------------------------------------------
 Filters: scalloc Max size num
-Randomness seeded to: 3962083308
+Randomness seeded to: 3978256209
 ===============================================================================
 All tests passed (27 assertions in 1 test case)
 
 <end of output>
-Test time =   0.10 sec
+Test time =   0.22 sec
 ----------------------------------------------------------
 Test Passed.
-"malloc_2.scalloc Max size num" end time: Aug 20 14:22 IDT
+"malloc_2.scalloc Max size num" end time: Aug 21 14:21 IDT
 "malloc_2.scalloc Max size num" time elapsed: 00:00:00
 ----------------------------------------------------------
 
@@ -424,19 +424,19 @@ Test Passed.
 22/47 Test: malloc_2.scalloc Max size size
 Command: "/mnt/c/Users/user/Documents/os/wet4/updatedTests/build/tests/malloc_2_test" "scalloc Max size size"
 Directory: /mnt/c/Users/user/Documents/os/wet4/updatedTests/build/tests
-"malloc_2.scalloc Max size size" start time: Aug 20 14:22 IDT
+"malloc_2.scalloc Max size size" start time: Aug 21 14:21 IDT
 Output:
 ----------------------------------------------------------
 Filters: scalloc Max size size
-Randomness seeded to: 1930370138
+Randomness seeded to: 2867848473
 ===============================================================================
 All tests passed (27 assertions in 1 test case)
 
 <end of output>
-Test time =   0.09 sec
+Test time =   0.26 sec
 ----------------------------------------------------------
 Test Passed.
-"malloc_2.scalloc Max size size" end time: Aug 20 14:22 IDT
+"malloc_2.scalloc Max size size" end time: Aug 21 14:21 IDT
 "malloc_2.scalloc Max size size" time elapsed: 00:00:00
 ----------------------------------------------------------
 
@@ -444,19 +444,19 @@ Test Passed.
 23/47 Test: malloc_2.scalloc Max size both
 Command: "/mnt/c/Users/user/Documents/os/wet4/updatedTests/build/tests/malloc_2_test" "scalloc Max size both"
 Directory: /mnt/c/Users/user/Documents/os/wet4/updatedTests/build/tests
-"malloc_2.scalloc Max size both" start time: Aug 20 14:22 IDT
+"malloc_2.scalloc Max size both" start time: Aug 21 14:21 IDT
 Output:
 ----------------------------------------------------------
 Filters: scalloc Max size both
-Randomness seeded to: 3653137759
+Randomness seeded to: 1576080373
 ===============================================================================
 All tests passed (35 assertions in 1 test case)
 
 <end of output>
-Test time =   0.08 sec
+Test time =   0.16 sec
 ----------------------------------------------------------
 Test Passed.
-"malloc_2.scalloc Max size both" end time: Aug 20 14:22 IDT
+"malloc_2.scalloc Max size both" end time: Aug 21 14:21 IDT
 "malloc_2.scalloc Max size both" time elapsed: 00:00:00
 ----------------------------------------------------------
 
@@ -464,19 +464,19 @@ Test Passed.
 24/47 Test: malloc_2.realloc
 Command: "/mnt/c/Users/user/Documents/os/wet4/updatedTests/build/tests/malloc_2_test" "realloc"
 Directory: /mnt/c/Users/user/Documents/os/wet4/updatedTests/build/tests
-"malloc_2.realloc" start time: Aug 20 14:22 IDT
+"malloc_2.realloc" start time: Aug 21 14:21 IDT
 Output:
 ----------------------------------------------------------
 Filters: realloc
-Randomness seeded to: 2837672921
+Randomness seeded to: 1455207642
 ===============================================================================
 All tests passed (36 assertions in 1 test case)
 
 <end of output>
-Test time =   0.04 sec
+Test time =   0.11 sec
 ----------------------------------------------------------
 Test Passed.
-"malloc_2.realloc" end time: Aug 20 14:22 IDT
+"malloc_2.realloc" end time: Aug 21 14:21 IDT
 "malloc_2.realloc" time elapsed: 00:00:00
 ----------------------------------------------------------
 
@@ -484,19 +484,19 @@ Test Passed.
 25/47 Test: malloc_2.realloc shrink
 Command: "/mnt/c/Users/user/Documents/os/wet4/updatedTests/build/tests/malloc_2_test" "realloc shrink"
 Directory: /mnt/c/Users/user/Documents/os/wet4/updatedTests/build/tests
-"malloc_2.realloc shrink" start time: Aug 20 14:22 IDT
+"malloc_2.realloc shrink" start time: Aug 21 14:21 IDT
 Output:
 ----------------------------------------------------------
 Filters: realloc shrink
-Randomness seeded to: 1420731486
+Randomness seeded to: 2453447701
 ===============================================================================
 All tests passed (36 assertions in 1 test case)
 
 <end of output>
-Test time =   0.05 sec
+Test time =   0.07 sec
 ----------------------------------------------------------
 Test Passed.
-"malloc_2.realloc shrink" end time: Aug 20 14:22 IDT
+"malloc_2.realloc shrink" end time: Aug 21 14:21 IDT
 "malloc_2.realloc shrink" time elapsed: 00:00:00
 ----------------------------------------------------------
 
@@ -504,19 +504,19 @@ Test Passed.
 26/47 Test: malloc_2.srealloc Max size
 Command: "/mnt/c/Users/user/Documents/os/wet4/updatedTests/build/tests/malloc_2_test" "srealloc Max size"
 Directory: /mnt/c/Users/user/Documents/os/wet4/updatedTests/build/tests
-"malloc_2.srealloc Max size" start time: Aug 20 14:22 IDT
+"malloc_2.srealloc Max size" start time: Aug 21 14:21 IDT
 Output:
 ----------------------------------------------------------
 Filters: srealloc Max size
-Randomness seeded to: 1946967963
+Randomness seeded to: 2729056090
 ===============================================================================
 All tests passed (35 assertions in 1 test case)
 
 <end of output>
-Test time =   0.05 sec
+Test time =   0.04 sec
 ----------------------------------------------------------
 Test Passed.
-"malloc_2.srealloc Max size" end time: Aug 20 14:22 IDT
+"malloc_2.srealloc Max size" end time: Aug 21 14:21 IDT
 "malloc_2.srealloc Max size" time elapsed: 00:00:00
 ----------------------------------------------------------
 
@@ -524,36 +524,19 @@ Test Passed.
 27/47 Test: malloc_3.Challenge 0 - Memory Utilization
 Command: "/mnt/c/Users/user/Documents/os/wet4/updatedTests/build/tests/malloc_3_test" "Challenge 0 - Memory Utilization"
 Directory: /mnt/c/Users/user/Documents/os/wet4/updatedTests/build/tests
-"malloc_3.Challenge 0 - Memory Utilization" start time: Aug 20 14:22 IDT
+"malloc_3.Challenge 0 - Memory Utilization" start time: Aug 21 14:21 IDT
 Output:
 ----------------------------------------------------------
 Filters: Challenge 0 - Memory Utilization
-Randomness seeded to: 1815317310
-
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-malloc_3_test is a Catch2 v3.0.1 host application.
-Run with -? for options
-
--------------------------------------------------------------------------------
-Challenge 0 - Memory Utilization
--------------------------------------------------------------------------------
-/mnt/c/Users/user/Documents/os/wet4/updatedTests/tests/malloc_3_test_basic.cpp:99
-...............................................................................
-
-/mnt/c/Users/user/Documents/os/wet4/updatedTests/tests/malloc_3_test_basic.cpp:88: FAILED:
-  REQUIRE( _num_allocated_bytes() == (testing_allocated_bytes) )
-with expansion:
-  4325376 (0x420000) == 4192624 (0x3ff970)
-
+Randomness seeded to: 4185676169
 ===============================================================================
-test cases: 1 | 1 failed
-assertions: 8 | 7 passed | 1 failed
+All tests passed (44 assertions in 1 test case)
 
 <end of output>
-Test time =   0.05 sec
+Test time =   0.07 sec
 ----------------------------------------------------------
-Test Failed.
-"malloc_3.Challenge 0 - Memory Utilization" end time: Aug 20 14:22 IDT
+Test Passed.
+"malloc_3.Challenge 0 - Memory Utilization" end time: Aug 21 14:21 IDT
 "malloc_3.Challenge 0 - Memory Utilization" time elapsed: 00:00:00
 ----------------------------------------------------------
 
@@ -561,36 +544,19 @@ Test Failed.
 28/47 Test: malloc_3.test all sizes
 Command: "/mnt/c/Users/user/Documents/os/wet4/updatedTests/build/tests/malloc_3_test" "test all sizes"
 Directory: /mnt/c/Users/user/Documents/os/wet4/updatedTests/build/tests
-"malloc_3.test all sizes" start time: Aug 20 14:22 IDT
+"malloc_3.test all sizes" start time: Aug 21 14:21 IDT
 Output:
 ----------------------------------------------------------
 Filters: test all sizes
-Randomness seeded to: 3388610518
-
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-malloc_3_test is a Catch2 v3.0.1 host application.
-Run with -? for options
-
--------------------------------------------------------------------------------
-test all sizes
--------------------------------------------------------------------------------
-/mnt/c/Users/user/Documents/os/wet4/updatedTests/tests/malloc_3_test_basic.cpp:141
-...............................................................................
-
-/mnt/c/Users/user/Documents/os/wet4/updatedTests/tests/malloc_3_test_basic.cpp:88: FAILED:
-  REQUIRE( _num_allocated_bytes() == (testing_allocated_bytes) )
-with expansion:
-  4325376 (0x420000) == 4192624 (0x3ff970)
-
+Randomness seeded to: 3327520796
 ===============================================================================
-test cases: 1 | 1 failed
-assertions: 2 | 1 passed | 1 failed
+All tests passed (110 assertions in 1 test case)
 
 <end of output>
-Test time =   0.04 sec
+Test time =   0.11 sec
 ----------------------------------------------------------
-Test Failed.
-"malloc_3.test all sizes" end time: Aug 20 14:22 IDT
+Test Passed.
+"malloc_3.test all sizes" end time: Aug 21 14:21 IDT
 "malloc_3.test all sizes" time elapsed: 00:00:00
 ----------------------------------------------------------
 
@@ -598,12 +564,11 @@ Test Failed.
 29/47 Test: malloc_3.Finding buddies test
 Command: "/mnt/c/Users/user/Documents/os/wet4/updatedTests/build/tests/malloc_3_test" "Finding buddies test"
 Directory: /mnt/c/Users/user/Documents/os/wet4/updatedTests/build/tests
-"malloc_3.Finding buddies test" start time: Aug 20 14:22 IDT
+"malloc_3.Finding buddies test" start time: Aug 21 14:21 IDT
 Output:
 ----------------------------------------------------------
 Filters: Finding buddies test
-Randomness seeded to: 461022149
-0
+Randomness seeded to: 1650249090
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 malloc_3_test is a Catch2 v3.0.1 host application.
@@ -615,20 +580,20 @@ Finding buddies test
 /mnt/c/Users/user/Documents/os/wet4/updatedTests/tests/malloc_3_test_basic.cpp:192
 ...............................................................................
 
-/mnt/c/Users/user/Documents/os/wet4/updatedTests/tests/malloc_3_test_basic.cpp:88: FAILED:
-  REQUIRE( _num_allocated_bytes() == (testing_allocated_bytes) )
+/mnt/c/Users/user/Documents/os/wet4/updatedTests/tests/malloc_3_test_basic.cpp:229: FAILED:
+  REQUIRE( smalloc(40) == __null )
 with expansion:
-  4325376 (0x420000) == 4192984 (0x3ffad8)
+  0x0000558c707e1028 == 0
 
 ===============================================================================
-test cases: 1 | 1 failed
-assertions: 3 | 2 passed | 1 failed
+test cases:    1 |    0 passed | 1 failed
+assertions: 1095 | 1094 passed | 1 failed
 
 <end of output>
-Test time =   0.04 sec
+Test time =   0.06 sec
 ----------------------------------------------------------
 Test Failed.
-"malloc_3.Finding buddies test" end time: Aug 20 14:22 IDT
+"malloc_3.Finding buddies test" end time: Aug 21 14:21 IDT
 "malloc_3.Finding buddies test" time elapsed: 00:00:00
 ----------------------------------------------------------
 
@@ -636,36 +601,19 @@ Test Failed.
 30/47 Test: malloc_3.multiple big allocs test
 Command: "/mnt/c/Users/user/Documents/os/wet4/updatedTests/build/tests/malloc_3_test" "multiple big allocs test"
 Directory: /mnt/c/Users/user/Documents/os/wet4/updatedTests/build/tests
-"malloc_3.multiple big allocs test" start time: Aug 20 14:22 IDT
+"malloc_3.multiple big allocs test" start time: Aug 21 14:21 IDT
 Output:
 ----------------------------------------------------------
 Filters: multiple big allocs test
-Randomness seeded to: 72128765
-
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-malloc_3_test is a Catch2 v3.0.1 host application.
-Run with -? for options
-
--------------------------------------------------------------------------------
-multiple big allocs test
--------------------------------------------------------------------------------
-/mnt/c/Users/user/Documents/os/wet4/updatedTests/tests/malloc_3_test_basic.cpp:241
-...............................................................................
-
-/mnt/c/Users/user/Documents/os/wet4/updatedTests/tests/malloc_3_test_basic.cpp:88: FAILED:
-  REQUIRE( _num_allocated_blocks() == __total_blocks )
-with expansion:
-  32 == 33
-
+Randomness seeded to: 4018006445
 ===============================================================================
-test cases: 1 | 1 failed
-assertions: 2 | 1 passed | 1 failed
+All tests passed (1396 assertions in 1 test case)
 
 <end of output>
-Test time =   0.04 sec
+Test time =   0.05 sec
 ----------------------------------------------------------
-Test Failed.
-"malloc_3.multiple big allocs test" end time: Aug 20 14:22 IDT
+Test Passed.
+"malloc_3.multiple big allocs test" end time: Aug 21 14:21 IDT
 "malloc_3.multiple big allocs test" time elapsed: 00:00:00
 ----------------------------------------------------------
 
@@ -673,36 +621,19 @@ Test Failed.
 31/47 Test: malloc_3.srealloc test
 Command: "/mnt/c/Users/user/Documents/os/wet4/updatedTests/build/tests/malloc_3_test" "srealloc test"
 Directory: /mnt/c/Users/user/Documents/os/wet4/updatedTests/build/tests
-"malloc_3.srealloc test" start time: Aug 20 14:22 IDT
+"malloc_3.srealloc test" start time: Aug 21 14:21 IDT
 Output:
 ----------------------------------------------------------
 Filters: srealloc test
-Randomness seeded to: 547407173
-
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-malloc_3_test is a Catch2 v3.0.1 host application.
-Run with -? for options
-
--------------------------------------------------------------------------------
-srealloc test
--------------------------------------------------------------------------------
-/mnt/c/Users/user/Documents/os/wet4/updatedTests/tests/malloc_3_test_basic.cpp:286
-...............................................................................
-
-/mnt/c/Users/user/Documents/os/wet4/updatedTests/tests/malloc_3_test_basic.cpp:88: FAILED:
-  REQUIRE( _num_allocated_bytes() == (testing_allocated_bytes) )
-with expansion:
-  4325376 (0x420000) == 4192624 (0x3ff970)
-
+Randomness seeded to: 3519630593
 ===============================================================================
-test cases: 1 | 1 failed
-assertions: 3 | 2 passed | 1 failed
+All tests passed (23 assertions in 1 test case)
 
 <end of output>
 Test time =   0.04 sec
 ----------------------------------------------------------
-Test Failed.
-"malloc_3.srealloc test" end time: Aug 20 14:22 IDT
+Test Passed.
+"malloc_3.srealloc test" end time: Aug 21 14:21 IDT
 "malloc_3.srealloc test" time elapsed: 00:00:00
 ----------------------------------------------------------
 
@@ -710,19 +641,19 @@ Test Failed.
 32/47 Test: malloc_3.scalloc test
 Command: "/mnt/c/Users/user/Documents/os/wet4/updatedTests/build/tests/malloc_3_test" "scalloc test"
 Directory: /mnt/c/Users/user/Documents/os/wet4/updatedTests/build/tests
-"malloc_3.scalloc test" start time: Aug 20 14:22 IDT
+"malloc_3.scalloc test" start time: Aug 21 14:21 IDT
 Output:
 ----------------------------------------------------------
 Filters: scalloc test
-Randomness seeded to: 2221795759
+Randomness seeded to: 226451457
 ===============================================================================
 All tests passed (27 assertions in 1 test case)
 
 <end of output>
-Test time =   0.04 sec
+Test time =   0.09 sec
 ----------------------------------------------------------
 Test Passed.
-"malloc_3.scalloc test" end time: Aug 20 14:22 IDT
+"malloc_3.scalloc test" end time: Aug 21 14:21 IDT
 "malloc_3.scalloc test" time elapsed: 00:00:00
 ----------------------------------------------------------
 
@@ -730,36 +661,19 @@ Test Passed.
 33/47 Test: malloc_3.srealloc merges test
 Command: "/mnt/c/Users/user/Documents/os/wet4/updatedTests/build/tests/malloc_3_test" "srealloc merges test"
 Directory: /mnt/c/Users/user/Documents/os/wet4/updatedTests/build/tests
-"malloc_3.srealloc merges test" start time: Aug 20 14:22 IDT
+"malloc_3.srealloc merges test" start time: Aug 21 14:21 IDT
 Output:
 ----------------------------------------------------------
 Filters: srealloc merges test
-Randomness seeded to: 1685880881
-
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-malloc_3_test is a Catch2 v3.0.1 host application.
-Run with -? for options
-
--------------------------------------------------------------------------------
-srealloc merges test
--------------------------------------------------------------------------------
-/mnt/c/Users/user/Documents/os/wet4/updatedTests/tests/malloc_3_test_basic.cpp:354
-...............................................................................
-
-/mnt/c/Users/user/Documents/os/wet4/updatedTests/tests/malloc_3_test_basic.cpp:88: FAILED:
-  REQUIRE( _num_allocated_bytes() == (testing_allocated_bytes) )
-with expansion:
-  4325376 (0x420000) == 4192624 (0x3ff970)
-
+Randomness seeded to: 2900010783
 ===============================================================================
-test cases: 1 | 1 failed
-assertions: 3 | 2 passed | 1 failed
+All tests passed (39 assertions in 1 test case)
 
 <end of output>
 Test time =   0.04 sec
 ----------------------------------------------------------
-Test Failed.
-"malloc_3.srealloc merges test" end time: Aug 20 14:22 IDT
+Test Passed.
+"malloc_3.srealloc merges test" end time: Aug 21 14:21 IDT
 "malloc_3.srealloc merges test" time elapsed: 00:00:00
 ----------------------------------------------------------
 
@@ -767,11 +681,11 @@ Test Failed.
 34/47 Test: malloc_3.weird values
 Command: "/mnt/c/Users/user/Documents/os/wet4/updatedTests/build/tests/malloc_3_test" "weird values"
 Directory: /mnt/c/Users/user/Documents/os/wet4/updatedTests/build/tests
-"malloc_3.weird values" start time: Aug 20 14:22 IDT
+"malloc_3.weird values" start time: Aug 21 14:21 IDT
 Output:
 ----------------------------------------------------------
 Filters: weird values
-Randomness seeded to: 2538722970
+Randomness seeded to: 3126067398
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 malloc_3_test is a Catch2 v3.0.1 host application.
@@ -786,17 +700,17 @@ weird values
 /mnt/c/Users/user/Documents/os/wet4/updatedTests/tests/malloc_3_test_basic.cpp:398: FAILED:
   REQUIRE( ptr == __null )
 with expansion:
-  0x00007faef997a028 == 0
+  0x00007f672f41e028 == 0
 
 ===============================================================================
 test cases: 1 | 1 failed
 assertions: 1 | 1 failed
 
 <end of output>
-Test time =   0.04 sec
+Test time =   0.05 sec
 ----------------------------------------------------------
 Test Failed.
-"malloc_3.weird values" end time: Aug 20 14:22 IDT
+"malloc_3.weird values" end time: Aug 21 14:21 IDT
 "malloc_3.weird values" time elapsed: 00:00:00
 ----------------------------------------------------------
 
@@ -804,11 +718,11 @@ Test Failed.
 35/47 Test: malloc_3.THANK YOU AVIGAIL YOU ARE AMAZING! size of blocks and meta data
 Command: "/mnt/c/Users/user/Documents/os/wet4/updatedTests/build/tests/malloc_3_test" "THANK YOU AVIGAIL YOU ARE AMAZING! size of blocks and meta data"
 Directory: /mnt/c/Users/user/Documents/os/wet4/updatedTests/build/tests
-"malloc_3.THANK YOU AVIGAIL YOU ARE AMAZING! size of blocks and meta data" start time: Aug 20 14:22 IDT
+"malloc_3.THANK YOU AVIGAIL YOU ARE AMAZING! size of blocks and meta data" start time: Aug 21 14:21 IDT
 Output:
 ----------------------------------------------------------
 Filters: THANK YOU AVIGAIL YOU ARE AMAZING! size of blocks and meta data
-Randomness seeded to: 3822006319
+Randomness seeded to: 3515908824
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 malloc_3_test is a Catch2 v3.0.1 host application.
@@ -833,7 +747,7 @@ assertions: 3 | 2 passed | 1 failed
 Test time =   0.05 sec
 ----------------------------------------------------------
 Test Failed.
-"malloc_3.THANK YOU AVIGAIL YOU ARE AMAZING! size of blocks and meta data" end time: Aug 20 14:22 IDT
+"malloc_3.THANK YOU AVIGAIL YOU ARE AMAZING! size of blocks and meta data" end time: Aug 21 14:21 IDT
 "malloc_3.THANK YOU AVIGAIL YOU ARE AMAZING! size of blocks and meta data" time elapsed: 00:00:00
 ----------------------------------------------------------
 
@@ -841,12 +755,16 @@ Test Failed.
 36/47 Test: malloc_3.THANK YOU AVIGAIL YOU ARE AMAZING! GEPETA 1
 Command: "/mnt/c/Users/user/Documents/os/wet4/updatedTests/build/tests/malloc_3_test" "THANK YOU AVIGAIL YOU ARE AMAZING! GEPETA 1"
 Directory: /mnt/c/Users/user/Documents/os/wet4/updatedTests/build/tests
-"malloc_3.THANK YOU AVIGAIL YOU ARE AMAZING! GEPETA 1" start time: Aug 20 14:22 IDT
+"malloc_3.THANK YOU AVIGAIL YOU ARE AMAZING! GEPETA 1" start time: Aug 21 14:21 IDT
 Output:
 ----------------------------------------------------------
 Filters: THANK YOU AVIGAIL YOU ARE AMAZING! GEPETA 1
-Randomness seeded to: 342302650
-Test GEPETA 1: 1
+Randomness seeded to: 1698054059
+Test GEPETA 1: 2
+Test GEPETA 1: 3
+Test GEPETA 1: 4
+Test GEPETA 1: 5
+Test GEPETA 1: 6
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 malloc_3_test is a Catch2 v3.0.1 host application.
@@ -859,19 +777,19 @@ THANK YOU AVIGAIL YOU ARE AMAZING! GEPETA 1
 ...............................................................................
 
 /mnt/c/Users/user/Documents/os/wet4/updatedTests/tests/malloc_3_test_basic.cpp:88: FAILED:
-  REQUIRE( _num_allocated_bytes() == (testing_allocated_bytes) )
+  REQUIRE( _num_allocated_blocks() == __total_blocks )
 with expansion:
-  4325376 (0x420000) == 4192624 (0x3ff970)
+  40 == 42
 
 ===============================================================================
-test cases: 1 | 1 failed
-assertions: 2 | 1 passed | 1 failed
+test cases:  1 |  0 passed | 1 failed
+assertions: 26 | 25 passed | 1 failed
 
 <end of output>
-Test time =   0.04 sec
+Test time =   0.05 sec
 ----------------------------------------------------------
 Test Failed.
-"malloc_3.THANK YOU AVIGAIL YOU ARE AMAZING! GEPETA 1" end time: Aug 20 14:22 IDT
+"malloc_3.THANK YOU AVIGAIL YOU ARE AMAZING! GEPETA 1" end time: Aug 21 14:21 IDT
 "malloc_3.THANK YOU AVIGAIL YOU ARE AMAZING! GEPETA 1" time elapsed: 00:00:00
 ----------------------------------------------------------
 
@@ -879,36 +797,19 @@ Test Failed.
 37/47 Test: malloc_3.THANK YOU AVIGAIL YOU ARE AMAZING! 1.5
 Command: "/mnt/c/Users/user/Documents/os/wet4/updatedTests/build/tests/malloc_3_test" "THANK YOU AVIGAIL YOU ARE AMAZING! 1.5"
 Directory: /mnt/c/Users/user/Documents/os/wet4/updatedTests/build/tests
-"malloc_3.THANK YOU AVIGAIL YOU ARE AMAZING! 1.5" start time: Aug 20 14:22 IDT
+"malloc_3.THANK YOU AVIGAIL YOU ARE AMAZING! 1.5" start time: Aug 21 14:21 IDT
 Output:
 ----------------------------------------------------------
 Filters: THANK YOU AVIGAIL YOU ARE AMAZING! 1.5
-Randomness seeded to: 919438093
-
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-malloc_3_test is a Catch2 v3.0.1 host application.
-Run with -? for options
-
--------------------------------------------------------------------------------
-THANK YOU AVIGAIL YOU ARE AMAZING! 1.5
--------------------------------------------------------------------------------
-/mnt/c/Users/user/Documents/os/wet4/updatedTests/tests/malloc_3_test_basic.cpp:677
-...............................................................................
-
-/mnt/c/Users/user/Documents/os/wet4/updatedTests/tests/malloc_3_test_basic.cpp:88: FAILED:
-  REQUIRE( _num_allocated_bytes() == (testing_allocated_bytes) )
-with expansion:
-  4325376 (0x420000) == 4192624 (0x3ff970)
-
+Randomness seeded to: 588349088
 ===============================================================================
-test cases: 1 | 1 failed
-assertions: 2 | 1 passed | 1 failed
+All tests passed (30 assertions in 1 test case)
 
 <end of output>
-Test time =   0.04 sec
+Test time =   0.05 sec
 ----------------------------------------------------------
-Test Failed.
-"malloc_3.THANK YOU AVIGAIL YOU ARE AMAZING! 1.5" end time: Aug 20 14:22 IDT
+Test Passed.
+"malloc_3.THANK YOU AVIGAIL YOU ARE AMAZING! 1.5" end time: Aug 21 14:21 IDT
 "malloc_3.THANK YOU AVIGAIL YOU ARE AMAZING! 1.5" time elapsed: 00:00:00
 ----------------------------------------------------------
 
@@ -916,36 +817,19 @@ Test Failed.
 38/47 Test: malloc_3.THANK YOU AVIGAIL YOU ARE AMAZING! 2
 Command: "/mnt/c/Users/user/Documents/os/wet4/updatedTests/build/tests/malloc_3_test" "THANK YOU AVIGAIL YOU ARE AMAZING! 2"
 Directory: /mnt/c/Users/user/Documents/os/wet4/updatedTests/build/tests
-"malloc_3.THANK YOU AVIGAIL YOU ARE AMAZING! 2" start time: Aug 20 14:22 IDT
+"malloc_3.THANK YOU AVIGAIL YOU ARE AMAZING! 2" start time: Aug 21 14:21 IDT
 Output:
 ----------------------------------------------------------
 Filters: THANK YOU AVIGAIL YOU ARE AMAZING! 2
-Randomness seeded to: 700888850
-
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-malloc_3_test is a Catch2 v3.0.1 host application.
-Run with -? for options
-
--------------------------------------------------------------------------------
-THANK YOU AVIGAIL YOU ARE AMAZING! 2
--------------------------------------------------------------------------------
-/mnt/c/Users/user/Documents/os/wet4/updatedTests/tests/malloc_3_test_basic.cpp:704
-...............................................................................
-
-/mnt/c/Users/user/Documents/os/wet4/updatedTests/tests/malloc_3_test_basic.cpp:88: FAILED:
-  REQUIRE( _num_allocated_bytes() == (testing_allocated_bytes) )
-with expansion:
-  4325376 (0x420000) == 4192664 (0x3ff998)
-
+Randomness seeded to: 3683012588
 ===============================================================================
-test cases: 1 | 1 failed
-assertions: 2 | 1 passed | 1 failed
+All tests passed (30 assertions in 1 test case)
 
 <end of output>
 Test time =   0.05 sec
 ----------------------------------------------------------
-Test Failed.
-"malloc_3.THANK YOU AVIGAIL YOU ARE AMAZING! 2" end time: Aug 20 14:22 IDT
+Test Passed.
+"malloc_3.THANK YOU AVIGAIL YOU ARE AMAZING! 2" end time: Aug 21 14:21 IDT
 "malloc_3.THANK YOU AVIGAIL YOU ARE AMAZING! 2" time elapsed: 00:00:00
 ----------------------------------------------------------
 
@@ -953,11 +837,11 @@ Test Failed.
 39/47 Test: malloc_3.THANK YOU AVIGAIL YOU ARE AMAZING! 3
 Command: "/mnt/c/Users/user/Documents/os/wet4/updatedTests/build/tests/malloc_3_test" "THANK YOU AVIGAIL YOU ARE AMAZING! 3"
 Directory: /mnt/c/Users/user/Documents/os/wet4/updatedTests/build/tests
-"malloc_3.THANK YOU AVIGAIL YOU ARE AMAZING! 3" start time: Aug 20 14:22 IDT
+"malloc_3.THANK YOU AVIGAIL YOU ARE AMAZING! 3" start time: Aug 21 14:21 IDT
 Output:
 ----------------------------------------------------------
 Filters: THANK YOU AVIGAIL YOU ARE AMAZING! 3
-Randomness seeded to: 2479469630
+Randomness seeded to: 916188410
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 malloc_3_test is a Catch2 v3.0.1 host application.
@@ -970,19 +854,19 @@ THANK YOU AVIGAIL YOU ARE AMAZING! 3
 ...............................................................................
 
 /mnt/c/Users/user/Documents/os/wet4/updatedTests/tests/malloc_3_test_basic.cpp:88: FAILED:
-  REQUIRE( _num_allocated_bytes() == (testing_allocated_bytes) )
+  REQUIRE( _num_allocated_blocks() == __total_blocks )
 with expansion:
-  4325376 (0x420000) == 4192704 (0x3ff9c0)
+  32 == 37
 
 ===============================================================================
-test cases: 1 | 1 failed
-assertions: 2 | 1 passed | 1 failed
+test cases:  1 |  0 passed | 1 failed
+assertions: 26 | 25 passed | 1 failed
 
 <end of output>
 Test time =   0.04 sec
 ----------------------------------------------------------
 Test Failed.
-"malloc_3.THANK YOU AVIGAIL YOU ARE AMAZING! 3" end time: Aug 20 14:22 IDT
+"malloc_3.THANK YOU AVIGAIL YOU ARE AMAZING! 3" end time: Aug 21 14:21 IDT
 "malloc_3.THANK YOU AVIGAIL YOU ARE AMAZING! 3" time elapsed: 00:00:00
 ----------------------------------------------------------
 
@@ -990,11 +874,11 @@ Test Failed.
 40/47 Test: malloc_3.THANK YOU AVIGAIL YOU ARE AMAZING! 8
 Command: "/mnt/c/Users/user/Documents/os/wet4/updatedTests/build/tests/malloc_3_test" "THANK YOU AVIGAIL YOU ARE AMAZING! 8"
 Directory: /mnt/c/Users/user/Documents/os/wet4/updatedTests/build/tests
-"malloc_3.THANK YOU AVIGAIL YOU ARE AMAZING! 8" start time: Aug 20 14:22 IDT
+"malloc_3.THANK YOU AVIGAIL YOU ARE AMAZING! 8" start time: Aug 21 14:21 IDT
 Output:
 ----------------------------------------------------------
 Filters: THANK YOU AVIGAIL YOU ARE AMAZING! 8
-Randomness seeded to: 2011682664
+Randomness seeded to: 3355641355
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 malloc_3_test is a Catch2 v3.0.1 host application.
@@ -1007,19 +891,19 @@ THANK YOU AVIGAIL YOU ARE AMAZING! 8
 ...............................................................................
 
 /mnt/c/Users/user/Documents/os/wet4/updatedTests/tests/malloc_3_test_basic.cpp:88: FAILED:
-  REQUIRE( _num_allocated_bytes() == (testing_allocated_bytes) )
+  REQUIRE( _num_allocated_blocks() == __total_blocks )
 with expansion:
-  4325376 (0x420000) == 4192664 (0x3ff998)
+  32 == 40
 
 ===============================================================================
-test cases: 1 | 1 failed
-assertions: 2 | 1 passed | 1 failed
+test cases:  1 |  0 passed | 1 failed
+assertions: 16 | 15 passed | 1 failed
 
 <end of output>
-Test time =   0.04 sec
+Test time =   0.13 sec
 ----------------------------------------------------------
 Test Failed.
-"malloc_3.THANK YOU AVIGAIL YOU ARE AMAZING! 8" end time: Aug 20 14:22 IDT
+"malloc_3.THANK YOU AVIGAIL YOU ARE AMAZING! 8" end time: Aug 21 14:21 IDT
 "malloc_3.THANK YOU AVIGAIL YOU ARE AMAZING! 8" time elapsed: 00:00:00
 ----------------------------------------------------------
 
@@ -1027,11 +911,11 @@ Test Failed.
 41/47 Test: malloc_3.THANK YOU AVIGAIL YOU ARE AMAZING! 9
 Command: "/mnt/c/Users/user/Documents/os/wet4/updatedTests/build/tests/malloc_3_test" "THANK YOU AVIGAIL YOU ARE AMAZING! 9"
 Directory: /mnt/c/Users/user/Documents/os/wet4/updatedTests/build/tests
-"malloc_3.THANK YOU AVIGAIL YOU ARE AMAZING! 9" start time: Aug 20 14:22 IDT
+"malloc_3.THANK YOU AVIGAIL YOU ARE AMAZING! 9" start time: Aug 21 14:21 IDT
 Output:
 ----------------------------------------------------------
 Filters: THANK YOU AVIGAIL YOU ARE AMAZING! 9
-Randomness seeded to: 2938774644
+Randomness seeded to: 4031615560
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 malloc_3_test is a Catch2 v3.0.1 host application.
@@ -1043,20 +927,20 @@ THANK YOU AVIGAIL YOU ARE AMAZING! 9
 /mnt/c/Users/user/Documents/os/wet4/updatedTests/tests/malloc_3_test_basic.cpp:774
 ...............................................................................
 
-/mnt/c/Users/user/Documents/os/wet4/updatedTests/tests/malloc_3_test_basic.cpp:88: FAILED:
-  REQUIRE( _num_allocated_bytes() == (testing_allocated_bytes) )
-with expansion:
-  4325376 (0x420000) == 4192624 (0x3ff970)
+/mnt/c/Users/user/Documents/os/wet4/updatedTests/tests/malloc_3_test_basic.cpp:774: FAILED:
+  {Unknown expression after the reported line}
+due to a fatal error condition:
+  SIGSEGV - Segmentation violation signal
 
 ===============================================================================
-test cases: 1 | 1 failed
-assertions: 2 | 1 passed | 1 failed
+test cases:  1 |  0 passed | 1 failed
+assertions: 36 | 35 passed | 1 failed
 
 <end of output>
-Test time =   0.04 sec
+Test time =   0.36 sec
 ----------------------------------------------------------
 Test Failed.
-"malloc_3.THANK YOU AVIGAIL YOU ARE AMAZING! 9" end time: Aug 20 14:22 IDT
+"malloc_3.THANK YOU AVIGAIL YOU ARE AMAZING! 9" end time: Aug 21 14:21 IDT
 "malloc_3.THANK YOU AVIGAIL YOU ARE AMAZING! 9" time elapsed: 00:00:00
 ----------------------------------------------------------
 
@@ -1064,36 +948,19 @@ Test Failed.
 42/47 Test: malloc_3.THANK YOU AVIGAIL YOU ARE AMAZING! 12
 Command: "/mnt/c/Users/user/Documents/os/wet4/updatedTests/build/tests/malloc_3_test" "THANK YOU AVIGAIL YOU ARE AMAZING! 12"
 Directory: /mnt/c/Users/user/Documents/os/wet4/updatedTests/build/tests
-"malloc_3.THANK YOU AVIGAIL YOU ARE AMAZING! 12" start time: Aug 20 14:22 IDT
+"malloc_3.THANK YOU AVIGAIL YOU ARE AMAZING! 12" start time: Aug 21 14:21 IDT
 Output:
 ----------------------------------------------------------
 Filters: THANK YOU AVIGAIL YOU ARE AMAZING! 12
-Randomness seeded to: 2236874176
-
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-malloc_3_test is a Catch2 v3.0.1 host application.
-Run with -? for options
-
--------------------------------------------------------------------------------
-THANK YOU AVIGAIL YOU ARE AMAZING! 12
--------------------------------------------------------------------------------
-/mnt/c/Users/user/Documents/os/wet4/updatedTests/tests/malloc_3_test_basic.cpp:819
-...............................................................................
-
-/mnt/c/Users/user/Documents/os/wet4/updatedTests/tests/malloc_3_test_basic.cpp:88: FAILED:
-  REQUIRE( _num_allocated_bytes() == (testing_allocated_bytes) )
-with expansion:
-  4325376 (0x420000) == 4192704 (0x3ff9c0)
-
+Randomness seeded to: 3684482241
 ===============================================================================
-test cases: 1 | 1 failed
-assertions: 2 | 1 passed | 1 failed
+All tests passed (40 assertions in 1 test case)
 
 <end of output>
 Test time =   0.05 sec
 ----------------------------------------------------------
-Test Failed.
-"malloc_3.THANK YOU AVIGAIL YOU ARE AMAZING! 12" end time: Aug 20 14:22 IDT
+Test Passed.
+"malloc_3.THANK YOU AVIGAIL YOU ARE AMAZING! 12" end time: Aug 21 14:21 IDT
 "malloc_3.THANK YOU AVIGAIL YOU ARE AMAZING! 12" time elapsed: 00:00:00
 ----------------------------------------------------------
 
@@ -1101,11 +968,11 @@ Test Failed.
 43/47 Test: malloc_3.THANK YOU AVIGAIL YOU ARE AMAZING! 13
 Command: "/mnt/c/Users/user/Documents/os/wet4/updatedTests/build/tests/malloc_3_test" "THANK YOU AVIGAIL YOU ARE AMAZING! 13"
 Directory: /mnt/c/Users/user/Documents/os/wet4/updatedTests/build/tests
-"malloc_3.THANK YOU AVIGAIL YOU ARE AMAZING! 13" start time: Aug 20 14:22 IDT
+"malloc_3.THANK YOU AVIGAIL YOU ARE AMAZING! 13" start time: Aug 21 14:21 IDT
 Output:
 ----------------------------------------------------------
 Filters: THANK YOU AVIGAIL YOU ARE AMAZING! 13
-Randomness seeded to: 624811501
+Randomness seeded to: 1793283796
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 malloc_3_test is a Catch2 v3.0.1 host application.
@@ -1118,19 +985,19 @@ THANK YOU AVIGAIL YOU ARE AMAZING! 13
 ...............................................................................
 
 /mnt/c/Users/user/Documents/os/wet4/updatedTests/tests/malloc_3_test_basic.cpp:88: FAILED:
-  REQUIRE( _num_allocated_bytes() == (testing_allocated_bytes) )
+  REQUIRE( _num_allocated_blocks() == __total_blocks )
 with expansion:
-  4325376 (0x420000) == 4192624 (0x3ff970)
+  35 == 39
 
 ===============================================================================
-test cases: 1 | 1 failed
-assertions: 2 | 1 passed | 1 failed
+test cases:  1 |  0 passed | 1 failed
+assertions: 21 | 20 passed | 1 failed
 
 <end of output>
 Test time =   0.05 sec
 ----------------------------------------------------------
 Test Failed.
-"malloc_3.THANK YOU AVIGAIL YOU ARE AMAZING! 13" end time: Aug 20 14:22 IDT
+"malloc_3.THANK YOU AVIGAIL YOU ARE AMAZING! 13" end time: Aug 21 14:21 IDT
 "malloc_3.THANK YOU AVIGAIL YOU ARE AMAZING! 13" time elapsed: 00:00:00
 ----------------------------------------------------------
 
@@ -1138,11 +1005,11 @@ Test Failed.
 44/47 Test: malloc_3.THANK YOU AVIGAIL YOU ARE AMAZING! 14
 Command: "/mnt/c/Users/user/Documents/os/wet4/updatedTests/build/tests/malloc_3_test" "THANK YOU AVIGAIL YOU ARE AMAZING! 14"
 Directory: /mnt/c/Users/user/Documents/os/wet4/updatedTests/build/tests
-"malloc_3.THANK YOU AVIGAIL YOU ARE AMAZING! 14" start time: Aug 20 14:22 IDT
+"malloc_3.THANK YOU AVIGAIL YOU ARE AMAZING! 14" start time: Aug 21 14:21 IDT
 Output:
 ----------------------------------------------------------
 Filters: THANK YOU AVIGAIL YOU ARE AMAZING! 14
-Randomness seeded to: 2373417140
+Randomness seeded to: 255979168
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 malloc_3_test is a Catch2 v3.0.1 host application.
@@ -1155,19 +1022,19 @@ THANK YOU AVIGAIL YOU ARE AMAZING! 14
 ...............................................................................
 
 /mnt/c/Users/user/Documents/os/wet4/updatedTests/tests/malloc_3_test_basic.cpp:88: FAILED:
-  REQUIRE( _num_allocated_bytes() == (testing_allocated_bytes) )
+  REQUIRE( _num_allocated_blocks() == __total_blocks )
 with expansion:
-  4325376 (0x420000) == 4192664 (0x3ff998)
+  36 == 38
 
 ===============================================================================
-test cases: 1 | 1 failed
-assertions: 2 | 1 passed | 1 failed
+test cases:  1 |  0 passed | 1 failed
+assertions: 26 | 25 passed | 1 failed
 
 <end of output>
 Test time =   0.05 sec
 ----------------------------------------------------------
 Test Failed.
-"malloc_3.THANK YOU AVIGAIL YOU ARE AMAZING! 14" end time: Aug 20 14:22 IDT
+"malloc_3.THANK YOU AVIGAIL YOU ARE AMAZING! 14" end time: Aug 21 14:21 IDT
 "malloc_3.THANK YOU AVIGAIL YOU ARE AMAZING! 14" time elapsed: 00:00:00
 ----------------------------------------------------------
 
@@ -1175,11 +1042,11 @@ Test Failed.
 45/47 Test: malloc_3.THANK YOU AVIGAIL YOU ARE AMAZING! 15
 Command: "/mnt/c/Users/user/Documents/os/wet4/updatedTests/build/tests/malloc_3_test" "THANK YOU AVIGAIL YOU ARE AMAZING! 15"
 Directory: /mnt/c/Users/user/Documents/os/wet4/updatedTests/build/tests
-"malloc_3.THANK YOU AVIGAIL YOU ARE AMAZING! 15" start time: Aug 20 14:22 IDT
+"malloc_3.THANK YOU AVIGAIL YOU ARE AMAZING! 15" start time: Aug 21 14:21 IDT
 Output:
 ----------------------------------------------------------
 Filters: THANK YOU AVIGAIL YOU ARE AMAZING! 15
-Randomness seeded to: 476480278
+Randomness seeded to: 2098993092
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 malloc_3_test is a Catch2 v3.0.1 host application.
@@ -1192,19 +1059,19 @@ THANK YOU AVIGAIL YOU ARE AMAZING! 15
 ...............................................................................
 
 /mnt/c/Users/user/Documents/os/wet4/updatedTests/tests/malloc_3_test_basic.cpp:88: FAILED:
-  REQUIRE( _num_allocated_bytes() == (testing_allocated_bytes) )
+  REQUIRE( _num_allocated_blocks() == __total_blocks )
 with expansion:
-  4325376 (0x420000) == 4192624 (0x3ff970)
+  39 == 40
 
 ===============================================================================
-test cases: 1 | 1 failed
-assertions: 2 | 1 passed | 1 failed
+test cases:  1 |  0 passed | 1 failed
+assertions: 36 | 35 passed | 1 failed
 
 <end of output>
-Test time =   0.05 sec
+Test time =   0.06 sec
 ----------------------------------------------------------
 Test Failed.
-"malloc_3.THANK YOU AVIGAIL YOU ARE AMAZING! 15" end time: Aug 20 14:22 IDT
+"malloc_3.THANK YOU AVIGAIL YOU ARE AMAZING! 15" end time: Aug 21 14:21 IDT
 "malloc_3.THANK YOU AVIGAIL YOU ARE AMAZING! 15" time elapsed: 00:00:00
 ----------------------------------------------------------
 
@@ -1212,11 +1079,11 @@ Test Failed.
 46/47 Test: malloc_3.really free?
 Command: "/mnt/c/Users/user/Documents/os/wet4/updatedTests/build/tests/malloc_3_test" "really free?"
 Directory: /mnt/c/Users/user/Documents/os/wet4/updatedTests/build/tests
-"malloc_3.really free?" start time: Aug 20 14:22 IDT
+"malloc_3.really free?" start time: Aug 21 14:21 IDT
 Output:
 ----------------------------------------------------------
 Filters: really free?
-Randomness seeded to: 4118074873
+Randomness seeded to: 3263221845
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 malloc_3_test is a Catch2 v3.0.1 host application.
@@ -1229,19 +1096,19 @@ really free?
 ...............................................................................
 
 /mnt/c/Users/user/Documents/os/wet4/updatedTests/tests/malloc_3_test_basic.cpp:88: FAILED:
-  REQUIRE( _num_allocated_bytes() == (testing_allocated_bytes) )
+  REQUIRE( _num_allocated_blocks() == __total_blocks )
 with expansion:
-  4325376 (0x420000) == 4192624 (0x3ff970)
+  44 == 45
 
 ===============================================================================
-test cases: 1 | 1 failed
-assertions: 2 | 1 passed | 1 failed
+test cases:  1 |  0 passed | 1 failed
+assertions: 51 | 50 passed | 1 failed
 
 <end of output>
-Test time =   0.05 sec
+Test time =   0.06 sec
 ----------------------------------------------------------
 Test Failed.
-"malloc_3.really free?" end time: Aug 20 14:22 IDT
+"malloc_3.really free?" end time: Aug 21 14:21 IDT
 "malloc_3.really free?" time elapsed: 00:00:00
 ----------------------------------------------------------
 
@@ -1249,11 +1116,11 @@ Test Failed.
 47/47 Test: malloc_3.tightest merge
 Command: "/mnt/c/Users/user/Documents/os/wet4/updatedTests/build/tests/malloc_3_test" "tightest merge"
 Directory: /mnt/c/Users/user/Documents/os/wet4/updatedTests/build/tests
-"malloc_3.tightest merge" start time: Aug 20 14:22 IDT
+"malloc_3.tightest merge" start time: Aug 21 14:21 IDT
 Output:
 ----------------------------------------------------------
 Filters: tightest merge
-Randomness seeded to: 2378432670
+Randomness seeded to: 2741328637
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 malloc_3_test is a Catch2 v3.0.1 host application.
@@ -1265,21 +1132,21 @@ tightest merge
 /mnt/c/Users/user/Documents/os/wet4/updatedTests/tests/malloc_3_test_basic.cpp:997
 ...............................................................................
 
-/mnt/c/Users/user/Documents/os/wet4/updatedTests/tests/malloc_3_test_basic.cpp:88: FAILED:
-  REQUIRE( _num_allocated_bytes() == (testing_allocated_bytes) )
+/mnt/c/Users/user/Documents/os/wet4/updatedTests/tests/malloc_3_test_basic.cpp:1017: FAILED:
+  REQUIRE( ptr4 == ptr3 )
 with expansion:
-  4325376 (0x420000) == 4192624 (0x3ff970)
+  0x000055e8ac7b2028 == 0x000055e8ac7b2128
 
 ===============================================================================
-test cases: 1 | 1 failed
-assertions: 2 | 1 passed | 1 failed
+test cases:  1 |  0 passed | 1 failed
+assertions: 26 | 25 passed | 1 failed
 
 <end of output>
 Test time =   0.05 sec
 ----------------------------------------------------------
 Test Failed.
-"malloc_3.tightest merge" end time: Aug 20 14:22 IDT
+"malloc_3.tightest merge" end time: Aug 21 14:21 IDT
 "malloc_3.tightest merge" time elapsed: 00:00:00
 ----------------------------------------------------------
 
-End testing: Aug 20 14:22 IDT
+End testing: Aug 21 14:21 IDT

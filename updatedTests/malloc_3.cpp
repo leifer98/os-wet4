@@ -167,8 +167,8 @@ void create()
     // Update stats
     stats.num_free_blocks = 32;
     stats.num_allocated_blocks = 32;
-    stats.num_free_bytes = 131072 * 32;
-    stats.num_allocated_bytes = 131072 * 32;
+    stats.num_free_bytes = (131072 - sizeof(metaData)) * 32;
+    stats.num_allocated_bytes = (131072 - sizeof(metaData)) * 32;
     stats.num_meta_data_bytes = sizeof(metaData) * 32;
 
     created = true;
@@ -239,14 +239,9 @@ void splitSingleCell(size_t order, metaData *currentMeta)
         {
             aft->prev = bef;
         }
-        // cout << "HERE4" << endl;
-        // cout << "\nfinished\n" << endl;
-        // printArr();
+
         currentMeta->prev = nullptr;
         currentMeta->next = nullptr;
-
-        // one less fr
-        stats.num_free_blocks--;
 
         return;
     }
@@ -285,10 +280,10 @@ void splitSingleCell(size_t order, metaData *currentMeta)
     addCellToArr(newCell);
 
     stats.num_free_blocks++; // Splitting adds an additional free block
-
+    stats.num_free_bytes -= stats.size_meta_data;
     stats.num_allocated_blocks++;
-    stats.num_allocated_bytes += pairs[currentMeta->order][0];
-    stats.num_meta_data_bytes += sizeof(metaData);
+    stats.num_allocated_bytes -= stats.size_meta_data;
+    stats.num_meta_data_bytes += stats.size_meta_data;
 
     splitSingleCell(order, currentMeta);
 }
@@ -339,6 +334,12 @@ void combine(metaData *first)
     first->buddy = nullptr; // Clear the pointer for the current order
     first->order++;         // Increase the order of the merged block
     addCellToArr(first);    // Reinsert the combined block into the appropriate order in `arr`
+
+    stats.num_free_blocks--; // combining reduces an additional free block
+    stats.num_free_bytes += stats.size_meta_data;
+    stats.num_allocated_blocks--;
+    stats.num_allocated_bytes += stats.size_meta_data;
+    stats.num_meta_data_bytes -= stats.size_meta_data;
 }
 
 /**
@@ -413,7 +414,11 @@ void *getMap(size_t size)
     new_mmd_block->order = size;    // Store the size of the allocated block in `order`
     new_mmd_block->is_free = false; // Mark the block as allocated (not free)
 
-    return new_block; // Return the pointer to the allocated block
+    stats.num_allocated_blocks++;
+    stats.num_allocated_bytes += size;
+    stats.num_meta_data_bytes += stats.size_meta_data;
+
+    return (void *)((char *)new_block + sizeof(metaData)); // Return the pointer to the allocated block
 }
 
 /**
@@ -422,11 +427,17 @@ void *getMap(size_t size)
  */
 void freeMap(void *ptr)
 {
+
     // Adjust the pointer to access the metadata associated with the block
-    metaData *block = (metaData *)((char *)ptr - sizeof(metaData));
+    metaData *block = (metaData *)ptr;
+    
+    stats.num_allocated_blocks--;
+    stats.num_allocated_bytes -= block->order;
+    stats.num_meta_data_bytes -= stats.size_meta_data;
 
     // Use munmap to free the allocated memory block
     munmap(block, sizeof(metaData) + block->order);
+
 }
 
 /**
@@ -440,8 +451,7 @@ void *smalloc(size_t size)
         create();
     if (size > (128 * 1024))
     {
-        
-        return (void *)((char *)getMap(size) + sizeof(metaData));
+        return getMap(size);
     }
     // printArr();
     int order = getOrder(size + sizeof(metaData));
@@ -451,12 +461,8 @@ void *smalloc(size_t size)
         return nullptr;
     newData->is_free = false;
 
-    // Use the pairs array to find the block size based on the order
-    size_t block_size = pairs[newData->order][0];
-
     stats.num_free_blocks--;
-    stats.num_allocated_bytes += block_size;
-    stats.num_free_bytes -= block_size;
+    stats.num_free_bytes -= (pairs[newData->order][0] - stats.size_meta_data);
 
     return (void *)((char *)newData + sizeof(metaData));
 }
@@ -485,24 +491,23 @@ void sfree(void *p)
 {
     if (p == nullptr)
         return;
+
     metaData *ptr = (metaData *)((char *)p - sizeof(metaData));
     if (ptr->is_free)
         return;
     if (ptr->order > 10)
     {
         freeMap(ptr);
+
         return;
     }
     ptr->is_free = true;
 
-    // Use the pairs array to find the block size based on the order
-    size_t block_size = pairs[ptr->order][0];
-
-    stats.num_free_blocks++;
-    stats.num_allocated_bytes -= block_size;
-    stats.num_free_bytes += block_size;
-
     addCellToArr(ptr);
+
+    stats.num_free_blocks++; // additional free block
+    stats.num_free_bytes += pairs[ptr->order][0] - stats.size_meta_data;
+
     freeHelper(ptr);
 }
 

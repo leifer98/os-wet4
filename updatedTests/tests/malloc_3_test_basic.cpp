@@ -196,13 +196,13 @@ TEST_CASE("Finding buddies test", "[malloc3]")
     // Allocate 64 blocks of size 128 * 2^9 - 64
     for (int i = 0; i < 64; i++)
     {
-        printf("%d\n", i);
+        // printf("%d\n", i);
         fflush(stdout);
         void *ptr = smalloc(128 * std::pow(2, 9) - 64);
         REQUIRE(ptr != nullptr);
         allocations.push_back(ptr);
         verify_block_by_order(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, allocations.size() % 2, allocations.size(), 32 - (int)(i / 2) - 1, 0, 0, 0);
-        printf("OK\n");
+        // printf("OK\n");
         fflush(stdout);
     }
 
@@ -579,7 +579,7 @@ TEST_CASE("THANK YOU AVIGAIL YOU ARE AMAZING! GEPETA 1", "[malloc3]")
     void *ptr1, *ptr2, *ptr3, *ptr4, *ptr5, *ptr6, *ptr7, *ptr8;
 
     // Test 1: Allocate a small block
-    std::cout << "Test GEPETA 1: 1" << std::endl;
+    // std::cout << "Test GEPETA 1: 1" << std::endl;
     ptr1 = smalloc(128 * pow(2, 0) - 64); // Request smaller than base block size
     verify_block_by_order(1, 1, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 31, 0, 0, 0);
 
